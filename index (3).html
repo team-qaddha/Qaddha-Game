@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>قدّها؟</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;800&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:light;--bg:#FFFFFF;--ink:#2E1D10;--muted:#8A7565;--accent:#7A4A22;--line:#E9DFD4;--t1:#5C3A21;--t2:#A8702F;--used:#F1ECE6;--on:#FFFFFF;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:"Tajawal",system-ui,sans-serif}
+body{max-width:560px;margin:0 auto;padding:16px 14px 28px}
+.hide{display:none!important}
+h1{font-size:2.2rem;font-weight:800;margin:4px 0 14px;text-align:center;color:var(--accent)}
+h2.sec{font-size:1.2rem;font-weight:800;margin:20px 0 10px}
+#home{min-height:80vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px}
+#home h1{font-size:3.4rem;margin:0}
+#home{position:relative}
+.ig{position:absolute;bottom:6px;left:50%;transform:translateX(-50%);display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;border:2px solid var(--accent);color:var(--accent)}
+.ig svg{width:26px;height:26px}
+.ig:focus-visible{outline:3px solid var(--t2);outline-offset:2px}
+#home p{color:var(--muted);margin:0 0 18px;font-size:1.1rem}
+.big{border:0;border-radius:14px;padding:16px 36px;background:var(--accent);color:var(--on);font:800 1.3rem "Tajawal",system-ui,sans-serif;cursor:pointer}
+.big:disabled{opacity:.4;cursor:default}
+.grp-h{display:flex;justify-content:space-between;align-items:center;margin:18px 0 8px}
+.grp-h h3{margin:0;font-size:1.1rem;font-weight:800}
+.all{background:none;border:0;color:var(--accent);font:800 .95rem "Tajawal",system-ui,sans-serif;cursor:pointer;padding:4px 8px}
+.chips{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.chip{display:flex;align-items:center;justify-content:center;gap:6px;min-height:56px;border:2px solid var(--accent);background:var(--bg);color:var(--accent);border-radius:14px;padding:10px;font:800 1.05rem "Tajawal",system-ui,sans-serif;cursor:pointer}
+.chip.on{background:var(--accent);color:var(--on)}
+.chip.on::before{content:"¹3"}
+.names{display:grid;gap:10px}
+.names label{font-weight:500;color:var(--muted);display:block;margin-bottom:4px}
+.names input{width:100%;border:2px solid var(--line);background:var(--bg);color:var(--ink);border-radius:12px;padding:12px;font:800 1.1rem "Tajawal",system-ui,sans-serif}
+.names input:focus{outline:3px solid var(--accent);border-color:transparent}
+.go{position:sticky;bottom:0;background:var(--bg);border-top:1px solid var(--line);margin-top:18px;padding:12px 0 6px;text-align:center}
+.go small{display:block;color:var(--muted);margin-top:8px}
+.score{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);padding:6px 0 10px;z-index:5}
+.team{border-radius:16px;padding:10px 12px;text-align:center;color:var(--on);font-weight:800}
+.team small{display:block;font-weight:500;opacity:.92;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.team b{font-size:2.1rem;line-height:1.1}
+#t1{background:var(--t1)}#t2{background:var(--t2)}
+.cat{border:2px solid var(--line);border-radius:18px;padding:12px;margin-bottom:14px;background:var(--bg)}
+.cat h2{font-size:1.2rem;font-weight:800;margin:0 0 10px;color:var(--accent)}
+.row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.cell{border:0;border-radius:14px;min-height:62px;background:var(--accent);color:var(--on);font:800 1.5rem "Tajawal",system-ui,sans-serif;cursor:pointer}
+.cell:active{transform:scale(.96)}
+.cell.used{background:var(--used);color:transparent;cursor:default}
+.cell:focus-visible,button:focus-visible{outline:3px solid var(--t2);outline-offset:2px}
+.foot{display:flex;justify-content:center;margin-top:18px}
+.ghost{background:none;border:2px solid var(--accent);color:var(--accent);border-radius:12px;padding:10px 20px;font:800 1rem "Tajawal",system-ui,sans-serif;cursor:pointer}
+#modal{position:fixed;inset:0;background:rgba(46,29,16,.6);display:none;align-items:center;justify-content:center;padding:18px;z-index:20}
+#modal.open{display:flex}
+.card{background:var(--bg);border-radius:20px;padding:22px 18px;width:100%;max-width:460px;text-align:center;border:3px solid var(--accent)}
+.meta{color:var(--muted);font-weight:500;margin:0 0 6px}
+.timer{font-size:2.4rem;font-weight:800;color:var(--accent);margin:0 0 8px;font-variant-numeric:tabular-nums}
+.timer.low{color:#B3261E}
+.timer.up{font-size:1.6rem}
+.q{font-size:1.5rem;font-weight:800;line-height:1.5;margin:0 0 18px}
+.a{font-size:1.4rem;font-weight:800;color:var(--accent);margin:0 0 18px}
+.btn{display:block;width:100%;border:0;border-radius:12px;padding:14px;margin-top:8px;font:800 1.15rem "Tajawal",system-ui,sans-serif;color:var(--on);cursor:pointer}
+.b1{background:var(--t1)}.b2{background:var(--t2)}.b0{background:var(--muted)}.bs{background:var(--accent)}
+</style>
+</head>
+<body>
+
+<section id="home">
+  <h1>قدّها؟</h1>
+  <p>لعبة أسئلة للأصحاب والعيلة</p>
+  <button class="big" id="enter">ادخل اللعبة</button>
+  <a class="ig" href="https://instagram.com/d1p_0" target="_blank" rel="noopener noreferrer" aria-label="حسابنا على إنستغرام"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+</section>
+
+<section id="setup" class="hide">
+  <h1>جهّز اللعبة</h1>
+  <h2 class="sec">اختار الفئات</h2>
+  <div id="groups"></div>
+  <h2 class="sec">أسماء الفرق</h2>
+  <div class="names">
+    <div><label for="n1">الفريق الأول</label><input id="n1" maxlength="14" value="الفريق الأول"></div>
+    <div><label for="n2">الفريق الثاني</label><input id="n2" maxlength="14" value="الفريق الثاني"></div>
+  </div>
+  <div class="go">
+    <button class="big" id="start" disabled>ابدأ اللعبة</button>
+    <small id="count">اختار فئة وحدة على الأقل</small>
+  </div>
+</section>
+
+<section id="game" class="hide">
+  <div class="score">
+    <div class="team" id="t1"><small id="l1"></small><b id="s1">0</b></div>
+    <div class="team" id="t2"><small id="l2"></small><b id="s2">0</b></div>
+  </div>
+  <div id="board"></div>
+  <div class="foot"><button class="ghost" id="back">تغيير الفئات والفرق</button></div>
+</section>
+
+<div id="modal" role="dialog" aria-modal="true">
+  <div class="card">
+    <p class="meta" id="meta"></p>
+    <div class="timer" id="timer">30</div>
+    <p class="q" id="q"></p>
+    <p class="a hide" id="a"></p>
+    <button class="btn bs" id="show">أظهر الجواب</button>
+    <div id="pick" class="hide">
+      <button class="btn b1" id="p1" data-t="1"></button>
+      <button class="btn b2" id="p2" data-t="2"></button>
+      <button class="btn b0" data-t="0">ما حدا جاوب</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const DATA=[
+ {name:"أسئلة دينية",qs:[
+  {p:100,q:"كم عدد أركان الإسلام؟",a:"خمسة"},
+  {p:200,q:"شو أول سورة في القرآن الكريم؟",a:"سورة الفاتحة"},
+  {p:300,q:"كم عدد سور القرآن الكريم؟",a:"114 سورة"}]},
+ {name:"حيوانات",qs:[
+  {p:100,q:"شو أسرع حيوان بري في العالم؟",a:"الفهد (الشيتا)"},
+  {p:200,q:"شو أكبر حيوان في العالم؟",a:"الحوت الأزرق"},
+  {p:300,q:"كم عدد قلوب الأخطبوط؟",a:"ثلاثة قلوب"}]},
+ {name:"علوم",qs:[
+  {p:100,q:"شو الكوكب الأقرب للشمس؟",a:"عطارد"},
+  {p:200,q:"شو الغاز اللي بنتنفسه وبنحتاجه للحياة؟",a:"الأكسجين"},
+  {p:300,q:"كم عدد عظام جسم الإنسان البالغ؟",a:"206 عظمات"}]},
+ {name:"أمثال شعبية",qs:[
+  {p:100,q:"أكمل المثل: الجار قبل …",a:"الدار"},
+  {p:200,q:"أكمل المثل: العين ما بتعلى على …",a:"الحاجب"},
+  {p:300,q:"أكمل المثل: اللي ما يعرف الصقر …",a:"يشويه"}]},
+ {name:"أكلات",qs:[
+  {p:100,q:"شو المكوّن الأساسي للحمّص؟",a:"حبّ الحمّص (مع الطحينة)"},
+  {p:200,q:"من أي نبات بنستخرج الطحينة؟",a:"السمسم"},
+  {p:300,q:"من أي بلد أصل البيتزا؟",a:"إيطاليا"}]},
+ {name:"جغرافيا",qs:[
+  {p:100,q:"شو عاصمة مصر؟",a:"القاهرة"},
+  {p:200,q:"شو أكبر محيط في العالم؟",a:"المحيط الهادئ"},
+  {p:300,q:"شو أصغر دولة في العالم مساحةً؟",a:"الفاتيكان"}]},
+ {name:"بلاد",qs:[
+  {p:100,q:"شو أكبر دولة في العالم مساحةً؟",a:"روسيا"},
+  {p:200,q:"شو أكثر دولة في العالم بعدد السكان؟",a:"الهند"},
+  {p:300,q:"كم عدد الدول الأعضاء في جامعة الدول العربية؟",a:"22 دولة"}]},
+ {name:"أعلام",qs:[
+  {p:100,q:"لأي دولة هذا العلم؟ 🇯🇴",a:"الأردن"},
+  {p:200,q:"لأي دولة هذا العلم؟ 🇧🇷",a:"البرازيل"},
+  {p:300,q:"لأي دولة هذا العلم؟ 🇨🇭",a:"سويسرا"}]},
+ {name:"معالم",qs:[
+  {p:100,q:"في أي دولة موجودة أهرامات الجيزة؟",a:"مصر"},
+  {p:200,q:"في أي دولة موجودة مدينة البتراء الأثرية؟",a:"الأردن"},
+  {p:300,q:"في أي دولة يوجد معبد أنكور وات؟",a:"كمبوديا"}]},
+ {name:"المنتخب الأردني",qs:[
+  {p:100,q:"شو لقب المنتخب الأردني لكرة القدم؟",a:"النشامى"},
+  {p:200,q:"شو اسم الجناح الأردني المعروف اللي لعب بنادي مونبلييه الفرنسي؟",a:"موسى التعمري"},
+  {p:300,q:"في أي بطولة وصل النشامى لأول نهائي بتاريخهم؟",a:"كأس آسيا (انلعبت بقطر)"}]},
+ {name:"الأكلات الأردنية",qs:[
+  {p:100,q:"شو الأكلة الوطنية الأردنية المشهورة؟",a:"المنسف"},
+  {p:200,q:"شو اسم أكلة الدجاج مع البصل والسماق على خبز الطابون؟",a:"المسخن"},
+  {p:300,q:"شو اسم الأكلة البدوية اللي بتنطبخ باللحم والخضار تحت الأرض؟",a:"الزرب"}]},
+ {name:"أكمل الآية",qs:[
+  {p:100,q:"أكمل الآية: ﴿قل هو الله أحد، الله …﴾",a:"الصمد"},
+  {p:200,q:"أكمل الآية: ﴿فإن مع العسر …﴾",a:"يسرًا"},
+  {p:300,q:"أكمل الآية: ﴿ألا بذكر الله …﴾",a:"تطمئن القلوب"}]},
+ {name:"ماركات السيارات",qs:[
+  {p:100,q:"من أي بلد ماركة تويوتا؟",a:"اليابان"},
+  {p:200,q:"من أي بلد ماركة بي إم دبليو؟",a:"ألمانيا"},
+  {p:300,q:"من أي بلد أصل ماركة فولفو؟",a:"السويد"}]},
+ {name:"أنواع السيارات",qs:[
+  {p:100,q:"شو اسم السيارة اللي صندوقها الخلفي مفتوح وبتستخدم للنقل؟",a:"بيك أب"},
+  {p:200,q:"شو بنسمي السيارة اللي بتجمع بين محرك بنزين ومحرك كهربائي؟",a:"سيارة هايبرد (هجينة)"},
+  {p:300,q:"شو معنى الحروف SUV؟",a:"Sport Utility Vehicle (سيارة رياضية متعددة الاستخدامات)"}]},
+ {name:"إلكترونيات",qs:[
+  {p:100,q:"شو اسم القطعة اللي بتعتبر عقل الكمبيوتر؟",a:"المعالج (CPU)"},
+  {p:200,q:"شو معنى الحروف USB؟",a:"Universal Serial Bus"},
+  {p:300,q:"شو معنى الحروف RAM؟",a:"ذاكرة الوصول العشوائي (Random Access Memory)"}]},
+ {name:"شركات التقنية",qs:[
+  {p:100,q:"أي شركة بتصنّع الآيفون؟",a:"آبل"},
+  {p:200,q:"أي شركة بتصنّع هواتف غالاكسي؟",a:"سامسونج"},
+  {p:300,q:"أي شركة أسسها بيل غيتس وبول ألين؟",a:"مايكروسوفت"}]}
+];
+const $=id=>document.getElementById(id);
+const picked=new Set();
+let sc,used,cur,names;
+
+function show(id){["home","setup","game"].forEach(s=>$(s).classList.toggle("hide",s!==id));window.scrollTo(0,0)}
+
+/* setup */
+const GROUPS=[
+ {t:"دين",ids:[0,11]},
+ {t:"منوّعات",ids:[1,2,3]},
+ {t:"بلاد وعالم",ids:[4,5,6,7,8]},
+ {t:"سيارات",ids:[12,13]},
+ {t:"إلكترونيات",ids:[14,15]},
+ {t:"الأردن",ids:[9,10]}
+];
+const chipEls={};
+function refresh(){
+  const n=picked.size;
+  $("start").disabled=n===0;
+  $("count").textContent=n===0?"اختار فئة وحدة على الأقل":"اخترت "+n+" من "+DATA.length+" فئة";
+  Object.keys(chipEls).forEach(i=>chipEls[i].classList.toggle("on",picked.has(+i)));
+}
+GROUPS.forEach(g=>{
+  const box=document.createElement("div");
+  const h=document.createElement("div");h.className="grp-h";
+  const t=document.createElement("h3");t.textContent=g.t;
+  const all=document.createElement("button");all.className="all";all.textContent="اختيار الكل";
+  all.addEventListener("click",()=>{
+    const every=g.ids.every(i=>picked.has(i));
+    g.ids.forEach(i=>every?picked.delete(i):picked.add(i));
+    refresh();
+  });
+  h.appendChild(t);h.appendChild(all);box.appendChild(h);
+  const grid=document.createElement("div");grid.className="chips";
+  g.ids.forEach(i=>{
+    const b=document.createElement("button");b.className="chip";b.textContent=DATA[i].name;
+    b.addEventListener("click",()=>{picked.has(i)?picked.delete(i):picked.add(i);refresh()});
+    chipEls[i]=b;grid.appendChild(b);
+  });
+  box.appendChild(grid);$("groups").appendChild(box);
+});
+
+/* game */
+function startGame(){
+  names={1:$("n1").value.trim()||"الفريق الأول",2:$("n2").value.trim()||"الفريق الثاني"};
+  sc={1:0,2:0};used={};cur=null;
+  $("s1").textContent=0;$("s2").textContent=0;
+  $("l1").textContent=names[1];$("l2").textContent=names[2];
+  $("p1").textContent=names[1]+" جاوب صح";
+  $("p2").textContent=names[2]+" جاوب صح";
+  const b=$("board");b.innerHTML="";
+  [...picked].sort((x,y)=>x-y).forEach(ci=>{
+    const sec=document.createElement("section");sec.className="cat";
+    const h=document.createElement("h2");h.textContent=DATA[ci].name;sec.appendChild(h);
+    const row=document.createElement("div");row.className="row";
+    DATA[ci].qs.forEach((x,r)=>{
+      const btn=document.createElement("button");
+      btn.className="cell";btn.textContent=x.p;btn.id="c"+ci+"-"+r;
+      btn.addEventListener("click",()=>openQ(ci,r));
+      row.appendChild(btn);
+    });
+    sec.appendChild(row);b.appendChild(sec);
+  });
+  show("game");
+}
+const TIME=30;let tick=null;
+function stopTimer(){clearInterval(tick);tick=null}
+function startTimer(){
+  stopTimer();let t=TIME;const el=$("timer");
+  el.className="timer";el.textContent=t;
+  tick=setInterval(()=>{
+    t--;
+    if(t<=0){
+      $("show").click();
+      el.textContent="انتهى الوقت";el.className="timer low up";
+    }else{
+      el.textContent=t;
+      el.classList.toggle("low",t<=5);
+    }
+  },1000);
+}
+function openQ(ci,r){
+  const k=ci+"-"+r;if(used[k])return;
+  cur={ci,r,k};const x=DATA[ci].qs[r];
+  $("meta").textContent=DATA[ci].name+" · "+x.p+" نقطة";
+  $("q").textContent=x.q;$("a").textContent=x.a;
+  $("a").classList.add("hide");$("pick").classList.add("hide");$("show").classList.remove("hide");
+  startTimer();
+  $("modal").classList.add("open");
+}
+$("enter").addEventListener("click",()=>show("setup"));
+$("start").addEventListener("click",startGame);
+$("back").addEventListener("click",()=>show("setup"));
+$("show").addEventListener("click",()=>{
+  stopTimer();$("a").classList.remove("hide");$("pick").classList.remove("hide");$("show").classList.add("hide");
+});
+$("pick").addEventListener("click",e=>{
+  const t=e.target.dataset.t;if(t===undefined||!cur)return;
+  const x=DATA[cur.ci].qs[cur.r];
+  if(t!=="0"){sc[t]+=x.p;$("s"+t).textContent=sc[t]}
+  used[cur.k]=true;$("c"+cur.k).classList.add("used");
+  cur=null;$("modal").classList.remove("open");
+});
+</script>
+</body>
+</html>
