@@ -3,284 +3,572 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>قدّها؟</title>
+<title>قدّها - لعبة أسئلة للأصحاب والعيلة</title>
+<meta name="description" content="قدّها: لعبة أسئلة عربية جماعية للأصحاب والعيلة، فئات أردنية وعربية وأفلام وتطبيقات ومسلسلات.">
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;800&display=swap" rel="stylesheet">
 <style>
-:root{color-scheme:light;--bg:#FFFFFF;--ink:#2E1D10;--muted:#8A7565;--accent:#7A4A22;--line:#E9DFD4;--t1:#5C3A21;--t2:#A8702F;--used:#F1ECE6;--on:#FFFFFF;
+:root{color-scheme:light;--bg:#fff;--ink:#2E1D10;--muted:#8A7565;--accent:#7A4A22;--line:#E9DFD4;--t1:#5C3A21;--t2:#A8702F;--on:#fff;--used:#EFE8DF;--bad:#B3261E;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--bg);color:var(--ink);font-family:"Tajawal",system-ui,sans-serif}
 body{max-width:560px;margin:0 auto;padding:16px 14px 28px}
 .hide{display:none!important}
-h1{font-size:2.2rem;font-weight:800;margin:4px 0 14px;text-align:center;color:var(--accent)}
-h2.sec{font-size:1.2rem;font-weight:800;margin:20px 0 10px}
-#home{min-height:80vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px}
-#home h1{font-size:3.4rem;margin:0}
-#home{position:relative}
-.ig{position:absolute;bottom:6px;left:50%;transform:translateX(-50%);display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;border:2px solid var(--accent);color:var(--accent)}
+h1{font-size:3.4rem;margin:0;color:var(--accent);font-weight:800}
+h2{font-size:1.2rem;margin:18px 0 10px;color:var(--accent);font-weight:800}
+#home{min-height:80vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:12px}
+#home p{color:var(--muted);font-size:1.1rem;margin:0 0 10px}
+.b{border:0;border-radius:14px;padding:14px 32px;background:var(--accent);color:var(--on);font:800 1.15rem "Tajawal",sans-serif;cursor:pointer}
+.b:disabled{opacity:.4}.b2{background:var(--t2)}.b3{background:var(--muted)}
+.ig{display:inline-flex;align-items:center;gap:6px;margin-top:14px;color:var(--accent);font-weight:800;text-decoration:none;direction:ltr}
 .ig svg{width:26px;height:26px}
-.ig:focus-visible{outline:3px solid var(--t2);outline-offset:2px}
-#home p{color:var(--muted);margin:0 0 18px;font-size:1.1rem}
-.big{border:0;border-radius:14px;padding:16px 36px;background:var(--accent);color:var(--on);font:800 1.3rem "Tajawal",system-ui,sans-serif;cursor:pointer}
-.big:disabled{opacity:.4;cursor:default}
-.grp-h{display:flex;justify-content:space-between;align-items:center;margin:18px 0 8px}
-.grp-h h3{margin:0;font-size:1.1rem;font-weight:800}
-.all{background:none;border:0;color:var(--accent);font:800 .95rem "Tajawal",system-ui,sans-serif;cursor:pointer;padding:4px 8px}
-.chips{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.chip{display:flex;align-items:center;justify-content:center;gap:6px;min-height:56px;border:2px solid var(--accent);background:var(--bg);color:var(--accent);border-radius:14px;padding:10px;font:800 1.05rem "Tajawal",system-ui,sans-serif;cursor:pointer}
-.chip.on{background:var(--accent);color:var(--on)}
-.chip.on::before{content:"¹3"}
-.names{display:grid;gap:10px}
-.names label{font-weight:500;color:var(--muted);display:block;margin-bottom:4px}
-.names input{width:100%;border:2px solid var(--line);background:var(--bg);color:var(--ink);border-radius:12px;padding:12px;font:800 1.1rem "Tajawal",system-ui,sans-serif}
-.names input:focus{outline:3px solid var(--accent);border-color:transparent}
-.go{position:sticky;bottom:0;background:var(--bg);border-top:1px solid var(--line);margin-top:18px;padding:12px 0 6px;text-align:center}
-.go small{display:block;color:var(--muted);margin-top:8px}
-.score{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);padding:6px 0 10px;z-index:5}
-.team{border-radius:16px;padding:10px 12px;text-align:center;color:var(--on);font-weight:800}
-.team small{display:block;font-weight:500;opacity:.92;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.team b{font-size:2.1rem;line-height:1.1}
-#t1{background:var(--t1)}#t2{background:var(--t2)}
-.cat{border:2px solid var(--line);border-radius:18px;padding:12px;margin-bottom:14px;background:var(--bg)}
-.cat h2{font-size:1.2rem;font-weight:800;margin:0 0 10px;color:var(--accent)}
-.row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.cell{border:0;border-radius:14px;min-height:62px;background:var(--accent);color:var(--on);font:800 1.5rem "Tajawal",system-ui,sans-serif;cursor:pointer}
-.cell:active{transform:scale(.96)}
-.cell.used{background:var(--used);color:transparent;cursor:default}
-.cell:focus-visible,button:focus-visible{outline:3px solid var(--t2);outline-offset:2px}
-.foot{display:flex;justify-content:center;margin-top:18px}
-.ghost{background:none;border:2px solid var(--accent);color:var(--accent);border-radius:12px;padding:10px 20px;font:800 1rem "Tajawal",system-ui,sans-serif;cursor:pointer}
-#modal{position:fixed;inset:0;background:rgba(46,29,16,.6);display:none;align-items:center;justify-content:center;padding:18px;z-index:20}
-#modal.open{display:flex}
-.card{background:var(--bg);border-radius:20px;padding:22px 18px;width:100%;max-width:460px;text-align:center;border:3px solid var(--accent)}
-.meta{color:var(--muted);font-weight:500;margin:0 0 6px}
-.timer{font-size:2.4rem;font-weight:800;color:var(--accent);margin:0 0 8px;font-variant-numeric:tabular-nums}
-.timer.low{color:#B3261E}
-.timer.up{font-size:1.6rem}
-.q{font-size:1.5rem;font-weight:800;line-height:1.5;margin:0 0 18px}
-.a{font-size:1.4rem;font-weight:800;color:var(--accent);margin:0 0 18px}
-.btn{display:block;width:100%;border:0;border-radius:12px;padding:14px;margin-top:8px;font:800 1.15rem "Tajawal",system-ui,sans-serif;color:var(--on);cursor:pointer}
-.b1{background:var(--t1)}.b2{background:var(--t2)}.b0{background:var(--muted)}.bs{background:var(--accent)}
+.cl{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.cp{display:flex;align-items:center;justify-content:center;gap:6px;min-height:54px;border:2px solid var(--accent);border-radius:12px;color:var(--accent);font-weight:800;text-align:center;cursor:pointer;padding:4px}
+.cp.on{background:var(--accent);color:var(--on)}
+.gh{display:flex;justify-content:space-between;align-items:center;margin:16px 0 8px}.gh h3{margin:0;font-size:1.05rem}.al{background:none;border:0;color:var(--accent);font:800 .9rem "Tajawal",sans-serif;cursor:pointer}
+.nm{display:grid;gap:10px}.nm label{font-weight:500;color:var(--muted);display:block;margin-bottom:4px}
+.nm input{width:100%;border:2px solid var(--line);border-radius:12px;padding:12px;font:500 1rem "Tajawal",sans-serif;color:var(--ink)}
+#sb{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}
+.tm{border-radius:14px;padding:8px;text-align:center;color:var(--on);font-weight:800}
+.tm small{display:block;font-weight:500;opacity:.9;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tm b{font-size:1.8rem;line-height:1.1}
+#tn{font-weight:800;color:var(--accent);font-size:.9rem;text-align:center;max-width:90px}
+#bd{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.ct{border:2px solid var(--line);border-radius:16px;overflow:hidden}
+.im{height:92px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.im:before,.im:after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.16)}
+.im:before{width:90px;height:90px;top:-30px;right:-20px}.im:after{width:60px;height:60px;bottom:-24px;left:-10px}
+.im span{font-size:3rem;position:relative}
+.cn{background:var(--accent);color:var(--on);font-weight:800;text-align:center;padding:5px 4px;font-size:.95rem}
+.tl{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:8px}
+.tb{border:0;border-radius:999px;padding:10px 0;background:#E7E1DA;color:#8E1B1B;font:800 1.05rem "Tajawal",sans-serif;cursor:pointer}
+.tb.us{background:var(--used);color:transparent;cursor:default}
+#md{position:fixed;inset:0;background:rgba(46,29,16,.6);display:none;align-items:center;justify-content:center;padding:16px;z-index:20}
+#md.on{display:flex}
+.cd{background:var(--bg);border-radius:20px;padding:20px 18px;width:100%;max-width:460px;text-align:center;border:3px solid var(--accent)}
+.mt{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-weight:500;margin-bottom:10px}
+#mp{background:var(--accent);color:var(--on);border-radius:999px;padding:2px 12px;font-weight:800}
+#tm{font-size:1.8rem;font-weight:800;color:var(--accent);font-variant-numeric:tabular-nums}#tm.low{color:var(--bad)}
+.q{font-size:1.5rem;font-weight:800;line-height:1.5;margin:8px 0 18px}
+.a{font-size:1.4rem;font-weight:800;color:var(--t2);margin:0 0 14px}
+.aw{display:grid;gap:8px}
+#end{text-align:center;padding-top:30px}
+#end .w{font-size:1.8rem;font-weight:800;color:var(--accent);margin:14px 0}
+.ft{margin-top:18px;text-align:center}
 </style>
 </head>
 <body>
 
 <section id="home">
-  <h1>قدّها؟</h1>
-  <p>لعبة أسئلة للأصحاب والعيلة</p>
-  <button class="big" id="enter">ادخل اللعبة</button>
-  <a class="ig" href="https://instagram.com/d1p_0" target="_blank" rel="noopener noreferrer" aria-label="حسابنا على إنستغرام"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+<h1>قدّها؟</h1>
+<p>لعبة أسئلة للأصحاب والعيلة</p>
+<button class="b" id="enter">ادخل اللعبة</button>
+<a class="ig" href="https://www.instagram.com/0_d1p" target="_blank" rel="noopener noreferrer" aria-label="حسابنا على إنستغرام"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>@0_d1p</a>
 </section>
 
 <section id="setup" class="hide">
-  <h1>جهّز اللعبة</h1>
-  <h2 class="sec">اختار الفئات</h2>
-  <div id="groups"></div>
-  <h2 class="sec">أسماء الفرق</h2>
-  <div class="names">
-    <div><label for="n1">الفريق الأول</label><input id="n1" maxlength="14" value="الفريق الأول"></div>
-    <div><label for="n2">الفريق الثاني</label><input id="n2" maxlength="14" value="الفريق الثاني"></div>
-  </div>
-  <div class="go">
-    <button class="big" id="start" disabled>ابدأ اللعبة</button>
-    <small id="count">اختار فئة وحدة على الأقل</small>
-  </div>
-</section>
-
-<section id="game" class="hide">
-  <div class="score">
-    <div class="team" id="t1"><small id="l1"></small><b id="s1">0</b></div>
-    <div class="team" id="t2"><small id="l2"></small><b id="s2">0</b></div>
-  </div>
-  <div id="board"></div>
-  <div class="foot"><button class="ghost" id="back">تغيير الفئات والفرق</button></div>
-</section>
-
-<div id="modal" role="dialog" aria-modal="true">
-  <div class="card">
-    <p class="meta" id="meta"></p>
-    <div class="timer" id="timer">30</div>
-    <p class="q" id="q"></p>
-    <p class="a hide" id="a"></p>
-    <button class="btn bs" id="show">أظهر الجواب</button>
-    <div id="pick" class="hide">
-      <button class="btn b1" id="p1" data-t="1"></button>
-      <button class="btn b2" id="p2" data-t="2"></button>
-      <button class="btn b0" data-t="0">ما حدا جاوب</button>
-    </div>
-  </div>
+<h1 style="font-size:2.2rem;text-align:center">جهّز اللعبة</h1>
+<h2>اختار الفئات · <span id="cn">0</span></h2>
+<div id="cl"></div>
+<h2>أسماء الفرق</h2>
+<div class="nm">
+<div><label for="n1">الفريق الأول</label><input id="n1" maxlength="14" value="الفريق الأول"></div>
+<div><label for="n2">الفريق الثاني</label><input id="n2" maxlength="14" value="الفريق الثاني"></div>
 </div>
+<div class="ft"><button class="b" id="go" disabled>ابدأ اللعبة</button></div>
+</section>
+
+<section id="board" class="hide">
+<div id="sb">
+<div class="tm" style="background:var(--t1)"><small id="l1"></small><b id="s1">0</b></div>
+<div id="tn"></div>
+<div class="tm" style="background:var(--t2)"><small id="l2"></small><b id="s2">0</b></div>
+</div>
+<div id="bd"></div>
+<div class="ft"><button class="b b3" id="fin">إنهاء اللعبة</button></div>
+</section>
+
+<section id="end" class="hide">
+<h1 style="font-size:2.4rem">النتيجة</h1>
+<div class="w" id="wn"></div>
+<div class="nm" id="fs"></div>
+<div class="ft"><button class="b" id="again">لعبة جديدة</button></div>
+<a class="ig" href="https://www.instagram.com/0_d1p" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>@0_d1p</a>
+</section>
+
+<div id="md"><div class="cd">
+<div class="mt"><span id="mp"></span><span id="mc"></span><span id="tm">60</span></div>
+<div class="q" id="mq"></div>
+<div class="a hide" id="ma"></div>
+<button class="b b2" id="sh">اعرض الجواب</button>
+<div class="aw hide" id="aw">
+<button class="b" id="w1"></button><button class="b b2" id="w2"></button><button class="b b3" id="w0">ولا أحد جاوب صح</button>
+</div></div></div>
 
 <script>
-const DATA=[
- {name:"أسئلة دينية",qs:[
-  {p:100,q:"كم عدد أركان الإسلام؟",a:"خمسة"},
-  {p:200,q:"شو أول سورة في القرآن الكريم؟",a:"سورة الفاتحة"},
-  {p:300,q:"كم عدد سور القرآن الكريم؟",a:"114 سورة"}]},
- {name:"حيوانات",qs:[
-  {p:100,q:"شو أسرع حيوان بري في العالم؟",a:"الفهد (الشيتا)"},
-  {p:200,q:"شو أكبر حيوان في العالم؟",a:"الحوت الأزرق"},
-  {p:300,q:"كم عدد قلوب الأخطبوط؟",a:"ثلاثة قلوب"}]},
- {name:"علوم",qs:[
-  {p:100,q:"شو الكوكب الأقرب للشمس؟",a:"عطارد"},
-  {p:200,q:"شو الغاز اللي بنتنفسه وبنحتاجه للحياة؟",a:"الأكسجين"},
-  {p:300,q:"كم عدد عظام جسم الإنسان البالغ؟",a:"206 عظمات"}]},
- {name:"أمثال شعبية",qs:[
-  {p:100,q:"أكمل المثل: الجار قبل …",a:"الدار"},
-  {p:200,q:"أكمل المثل: العين ما بتعلى على …",a:"الحاجب"},
-  {p:300,q:"أكمل المثل: اللي ما يعرف الصقر …",a:"يشويه"}]},
- {name:"أكلات",qs:[
-  {p:100,q:"شو المكوّن الأساسي للحمّص؟",a:"حبّ الحمّص (مع الطحينة)"},
-  {p:200,q:"من أي نبات بنستخرج الطحينة؟",a:"السمسم"},
-  {p:300,q:"من أي بلد أصل البيتزا؟",a:"إيطاليا"}]},
- {name:"جغرافيا",qs:[
-  {p:100,q:"شو عاصمة مصر؟",a:"القاهرة"},
-  {p:200,q:"شو أكبر محيط في العالم؟",a:"المحيط الهادئ"},
-  {p:300,q:"شو أصغر دولة في العالم مساحةً؟",a:"الفاتيكان"}]},
- {name:"بلاد",qs:[
-  {p:100,q:"شو أكبر دولة في العالم مساحةً؟",a:"روسيا"},
-  {p:200,q:"شو أكثر دولة في العالم بعدد السكان؟",a:"الهند"},
-  {p:300,q:"كم عدد الدول الأعضاء في جامعة الدول العربية؟",a:"22 دولة"}]},
- {name:"أعلام",qs:[
-  {p:100,q:"لأي دولة هذا العلم؟ 🇯🇴",a:"الأردن"},
-  {p:200,q:"لأي دولة هذا العلم؟ 🇧🇷",a:"البرازيل"},
-  {p:300,q:"لأي دولة هذا العلم؟ 🇨🇭",a:"سويسرا"}]},
- {name:"معالم",qs:[
-  {p:100,q:"في أي دولة موجودة أهرامات الجيزة؟",a:"مصر"},
-  {p:200,q:"في أي دولة موجودة مدينة البتراء الأثرية؟",a:"الأردن"},
-  {p:300,q:"في أي دولة يوجد معبد أنكور وات؟",a:"كمبوديا"}]},
- {name:"المنتخب الأردني",qs:[
-  {p:100,q:"شو لقب المنتخب الأردني لكرة القدم؟",a:"النشامى"},
-  {p:200,q:"شو اسم الجناح الأردني المعروف اللي لعب بنادي مونبلييه الفرنسي؟",a:"موسى التعمري"},
-  {p:300,q:"في أي بطولة وصل النشامى لأول نهائي بتاريخهم؟",a:"كأس آسيا (انلعبت بقطر)"}]},
- {name:"الأكلات الأردنية",qs:[
-  {p:100,q:"شو الأكلة الوطنية الأردنية المشهورة؟",a:"المنسف"},
-  {p:200,q:"شو اسم أكلة الدجاج مع البصل والسماق على خبز الطابون؟",a:"المسخن"},
-  {p:300,q:"شو اسم الأكلة البدوية اللي بتنطبخ باللحم والخضار تحت الأرض؟",a:"الزرب"}]},
- {name:"أكمل الآية",qs:[
-  {p:100,q:"أكمل الآية: ﴿قل هو الله أحد، الله …﴾",a:"الصمد"},
-  {p:200,q:"أكمل الآية: ﴿فإن مع العسر …﴾",a:"يسرًا"},
-  {p:300,q:"أكمل الآية: ﴿ألا بذكر الله …﴾",a:"تطمئن القلوب"}]},
- {name:"ماركات السيارات",qs:[
-  {p:100,q:"من أي بلد ماركة تويوتا؟",a:"اليابان"},
-  {p:200,q:"من أي بلد ماركة بي إم دبليو؟",a:"ألمانيا"},
-  {p:300,q:"من أي بلد أصل ماركة فولفو؟",a:"السويد"}]},
- {name:"أنواع السيارات",qs:[
-  {p:100,q:"شو اسم السيارة اللي صندوقها الخلفي مفتوح وبتستخدم للنقل؟",a:"بيك أب"},
-  {p:200,q:"شو بنسمي السيارة اللي بتجمع بين محرك بنزين ومحرك كهربائي؟",a:"سيارة هايبرد (هجينة)"},
-  {p:300,q:"شو معنى الحروف SUV؟",a:"Sport Utility Vehicle (سيارة رياضية متعددة الاستخدامات)"}]},
- {name:"إلكترونيات",qs:[
-  {p:100,q:"شو اسم القطعة اللي بتعتبر عقل الكمبيوتر؟",a:"المعالج (CPU)"},
-  {p:200,q:"شو معنى الحروف USB؟",a:"Universal Serial Bus"},
-  {p:300,q:"شو معنى الحروف RAM؟",a:"ذاكرة الوصول العشوائي (Random Access Memory)"}]},
- {name:"شركات التقنية",qs:[
-  {p:100,q:"أي شركة بتصنّع الآيفون؟",a:"آبل"},
-  {p:200,q:"أي شركة بتصنّع هواتف غالاكسي؟",a:"سامسونج"},
-  {p:300,q:"أي شركة أسسها بيل غيتس وبول ألين؟",a:"مايكروسوفت"}]}
+(function(){
+var $=function(i){return document.getElementById(i)};
+/* الفئات: لإضافة فئة جديدة أضف سطر هون. img اختياري: مسار صورة مرفوعة بالريبو */
+var C=[
+{id:"is",n:"أسئلة دينية",e:"🕌",a:"#2F8F83",b:"#175048"},
+{id:"ay",n:"أكمل الآية",e:"📖",a:"#4FA89B",b:"#1F6B60"},
+{id:"an",n:"حيوانات",e:"🦁",a:"#D9A441",b:"#8A5A12"},
+{id:"sc",n:"علوم",e:"🔬",a:"#4A90C2",b:"#1F4F7A"},
+{id:"pr",n:"أمثال شعبية",e:"💬",a:"#C9825B",b:"#7A3F22"},
+{id:"gn",n:"ثقافة عامة",e:"🧠",a:"#E0A82E",b:"#8A6212"},
+{id:"fd",n:"أكلات",e:"🍽️",a:"#E07B4A",b:"#963A14"},
+{id:"ge",n:"جغرافيا",e:"🗺️",a:"#5AA06A",b:"#27613A"},
+{id:"co",n:"بلاد",e:"🌐",a:"#4C7FB5",b:"#23466F"},
+{id:"fl",n:"أعلام",e:"🚩",a:"#C74B4B",b:"#7A1F1F"},
+{id:"lm",n:"معالم",e:"🗼",a:"#8C6BB1",b:"#4A2F73"},
+{id:"ar",n:"الدول العربية",e:"🌍",a:"#4C9A6A",b:"#24593C"},
+{id:"cb",n:"ماركات السيارات",e:"🚗",a:"#7C8A96",b:"#3C4752"},
+{id:"ct",n:"أنواع السيارات",e:"🚙",a:"#9A7B5B",b:"#54402B"},
+{id:"el",n:"إلكترونيات",e:"💻",a:"#5A6FB0",b:"#2B3A78"},
+{id:"tc",n:"شركات التقنية",e:"🏢",a:"#3B9BA8",b:"#1B5660"},
+{id:"ap",n:"تطبيقات",e:"📱",a:"#3B82A0",b:"#1F4E66"},
+{id:"jt",n:"المنتخب الأردني",e:"🏟️",a:"#C0392B",b:"#6E1B13"},
+{id:"jf",n:"الأكلات الأردنية",e:"🍖",a:"#B8743A",b:"#6B3B14"},
+{id:"jo",n:"وين بالأردن؟",e:"🏛️",a:"#D08A4E",b:"#7A4A22"},
+{id:"br",n:"شعارات وماركات أردنية",e:"🏷️",a:"#E0603A",b:"#8E3317"},
+{id:"mv",n:"أفلام أجنبية",e:"🎬",a:"#6B4E9B",b:"#3A2766"},
+{id:"tr",n:"مسلسلات تركية",e:"📺",a:"#B5483A",b:"#5E1C14"},
+{id:"sp",n:"رياضة",e:"⚽",a:"#3FA34D",b:"#1E5E2A"}
 ];
-const $=id=>document.getElementById(id);
-const picked=new Set();
-let sc,used,cur,names;
+var QB=window.QB={},S={},G,cur,ti,sel=[];
+/* addQ(id, النقاط, ["سؤال|جواب", ...]) - ملفات الأسئلة الإضافية (q2.js ...) بتستعملها */
+window.addQ=function(id,l,a){var o=QB[id]=QB[id]||{200:[],400:[],600:[]};o[l].push.apply(o[l],a)};
+try{S=JSON.parse(localStorage.getItem("qd1")||"{}")}catch(e){}
+function sv(){try{localStorage.setItem("qd1",JSON.stringify(S))}catch(e){}}
+function cat(id){return C.filter(function(c){return c.id===id})[0]}
+function go(id){["home","setup","board","end"].forEach(function(s){$(s).classList.toggle("hide",s!==id)});window.scrollTo(0,0)}
 
-function show(id){["home","setup","game"].forEach(s=>$(s).classList.toggle("hide",s!==id));window.scrollTo(0,0)}
+addQ("jo",200,["أين تقع مدينة البتراء الأثرية؟|محافظة معان","أين يقع وادي رم؟|جنوب الأردن (محافظة العقبة)","أين تقع مدينة جرش الأثرية؟|محافظة جرش","أين تقع قلعة الكرك؟|محافظة الكرك"]);
+addQ("jo",400,["في أي محافظة تقع مدينة السلط؟|البلقاء","جبل نيبو يقع قرب أي مدينة؟|مادبا","في أي محافظة تقع أم قيس؟|إربد"]);
+addQ("jo",600,["في أي محافظة تقع قلعة عجلون؟|عجلون","في أي محافظة تقع بلدة الأزرق؟|الزرقاء","في أي محافظة تقع قلعة الشوبك؟|معان"]);
+addQ("br",200,["شو اسم شركة الطيران الوطنية الأردنية؟|الملكية الأردنية","شو اسم أشهر محل حمص وفلافل بوسط البلد بعمّان؟|هاشم","شو اسم شركة الاتصالات الأردنية اللي لونها برتقالي؟|أورانج","شو اسم محل الحلويات الشهير بعمّان المعروف بالكنافة؟|حبيبة"]);
+addQ("br",400,["شو اسم أول بنك وطني أردني عربي تأسس سنة 1930؟|البنك العربي","شو اسم الشركة الأردنية العالمية لصناعة الأدوية؟|الحكمة","شو اسم الشركة اللي تستخرج البوتاس من البحر الميت؟|شركة البوتاس العربية"]);
+addQ("br",600,["شو اسم الشركة الأردنية الوحيدة لتكرير النفط؟|مصفاة البترول الأردنية","شو اسم مطار عمّان الدولي الرئيسي؟|مطار الملكة علياء الدولي","شو اسم شركة المياه اللي بتخدم عمّان؟|مياهنا"]);
+addQ("ap",200,["تطبيق شعاره شبح أبيض على خلفية صفراء؟|سناب شات","تطبيق فيديوهات قصيرة شعاره نغمة موسيقية؟|تيك توك","تطبيق مراسلة شعاره سماعة هاتف بفقاعة خضراء؟|واتساب"]);
+addQ("ap",400,["تطبيق مشاهدة أفلام ومسلسلات شعاره حرف N أحمر؟|نتفليكس","تطبيق صور شعاره كاميرا بألوان متدرجة؟|إنستغرام","تطبيق توصيل ركاب اسمه يبدأ بحرف الكاف؟|كريم"]);
+addQ("ap",600,["تطبيق تعلّم لغات شعاره بومة خضراء؟|دولينجو","تطبيق مراسلة شعاره طيارة ورقية زرقاء؟|تيليجرام","تطبيق موسيقى شعاره أخضر بثلاثة خطوط منحنية؟|سبوتيفاي"]);
+addQ("mv",200,["شو اسم الأسد الصغير ببطولة فيلم The Lion King؟|سيمبا","مين الممثل اللي لعب دور جاك بفيلم تيتانيك؟|ليوناردو دي كابريو","شو اسم الساحر الصغير صاحب الندبة على شكل برق؟|هاري بوتر"]);
+addQ("mv",400,["مين مخرج فيلم Inception؟|كريستوفر نولان","جملة May the Force be with you مشهورة بأي سلسلة أفلام؟|حرب النجوم (Star Wars)","فيلم أنيميشن فيه وودي وباز؟|توي ستوري"]);
+addQ("mv",600,["مين مخرج فيلم Pulp Fiction؟|كوينتين تارانتينو","شو الاسم الحقيقي لشخصية آيرون مان؟|توني ستارك","فيلم Parasite الفائز بأوسكار أفضل فيلم، من أي دولة؟|كوريا الجنوبية"]);
+addQ("ar",200,["شو عاصمة مصر؟|القاهرة","شو عاصمة المغرب؟|الرباط","أكبر دولة عربية بالمساحة؟|الجزائر"]);
+addQ("ar",400,["شو عاصمة موريتانيا؟|نواكشوط","مسقط عاصمة أي دولة عربية؟|سلطنة عُمان","شو عاصمة السودان؟|الخرطوم"]);
+addQ("ar",600,["شو عاصمة جزر القمر؟|موروني","شو عاصمة الصومال؟|مقديشو","كم عدد الدول الأعضاء بجامعة الدول العربية؟|22 دولة"]);
+addQ("tr",200,["مسلسل تركي بطله مراد علمدار؟|وادي الذئاب","مسلسل تركي مدبلج بطلته نور وبطله مهند؟|نور","مسلسل تركي تاريخي بطله أرطغرل؟|قيامة أرطغرل"]);
+addQ("tr",400,["مسلسل تركي عن السلطان سليمان القانوني؟|حريم السلطان","مين الممثل اللي لعب دور مراد علمدار؟|نجاتي شاشماز","مسلسل تركي بطلاه عمر ودفنة؟|حب للإيجار"]);
+addQ("tr",600,["مين الممثل التركي اللي لعب دور مهند؟|كيفانش تاتليتوغ","مين الممثلة اللي لعبت دور هيام في حريم السلطان؟|مريم أوزرلي","مين الممثل اللي لعب السلطان سليمان؟|خالد أرغنج"]);
+addQ("gn",200,["كم عدد قارات العالم؟|7","شو أكبر محيط بالعالم؟|المحيط الهادئ","شو أسرع حيوان بري؟|الفهد"]);
+addQ("gn",400,["شو العنصر اللي رمزه Au؟|الذهب","كم عظمة بجسم الإنسان البالغ؟|206","أي كوكب بيسموه الكوكب الأحمر؟|المريخ"]);
+addQ("gn",600,["بأي سنة هبط الإنسان على القمر لأول مرة؟|1969","مين اخترع المصباح الكهربائي التجاري؟|توماس إديسون","أصغر دولة بالعالم مساحة؟|الفاتيكان"]);
+addQ("sp",200,["كم لاعب بفريق كرة القدم داخل الملعب؟|11","مين فاز بكأس العالم 2022؟|الأرجنتين","شو لون بطاقة الطرد بكرة القدم؟|الحمراء"]);
+addQ("sp",400,["أي دولة استضافت كأس العالم 2022؟|قطر","مين الهداف التاريخي لريال مدريد؟|كريستيانو رونالدو","كم مرة فاز البرازيل بكأس العالم؟|5 مرات"]);
+addQ("sp",600,["مين فاز بكأس العالم 2014؟|ألمانيا","أي منتخب هزم الأردن بنهائي كأس آسيا 2023؟|قطر","كم لاعب بفريق كرة السلة داخل الملعب؟|5"]);
+addQ("is",200,["كم عدد أركان الإسلام؟|5","شو أول سورة بالمصحف؟|الفاتحة","بأي شهر بصوم المسلمين؟|رمضان"]);
+addQ("is",400,["كم عدد سور القرآن الكريم؟|114","غزوة سُميت باسم جبل بالمدينة؟|أُحد","النبي اللي ابتلعه الحوت؟|يونس عليه السلام"]);
+addQ("is",600,["شو أطول سورة بالقرآن؟|البقرة","كم سنة استغرق نزول القرآن؟|23 سنة","الصحابي الملقب بسيف الله المسلول؟|خالد بن الوليد"]);
 
-/* setup */
-const GROUPS=[
- {t:"دين",ids:[0,11]},
- {t:"منوّعات",ids:[1,2,3]},
- {t:"بلاد وعالم",ids:[4,5,6,7,8]},
- {t:"سيارات",ids:[12,13]},
- {t:"إلكترونيات",ids:[14,15]},
- {t:"الأردن",ids:[9,10]}
-];
-const chipEls={};
-function refresh(){
-  const n=picked.size;
-  $("start").disabled=n===0;
-  $("count").textContent=n===0?"اختار فئة وحدة على الأقل":"اخترت "+n+" من "+DATA.length+" فئة";
-  Object.keys(chipEls).forEach(i=>chipEls[i].classList.toggle("on",picked.has(+i)));
-}
-GROUPS.forEach(g=>{
-  const box=document.createElement("div");
-  const h=document.createElement("div");h.className="grp-h";
-  const t=document.createElement("h3");t.textContent=g.t;
-  const all=document.createElement("button");all.className="all";all.textContent="اختيار الكل";
-  all.addEventListener("click",()=>{
-    const every=g.ids.every(i=>picked.has(i));
-    g.ids.forEach(i=>every?picked.delete(i):picked.add(i));
-    refresh();
-  });
-  h.appendChild(t);h.appendChild(all);box.appendChild(h);
-  const grid=document.createElement("div");grid.className="chips";
-  g.ids.forEach(i=>{
-    const b=document.createElement("button");b.className="chip";b.textContent=DATA[i].name;
-    b.addEventListener("click",()=>{picked.has(i)?picked.delete(i):picked.add(i);refresh()});
-    chipEls[i]=b;grid.appendChild(b);
-  });
-  box.appendChild(grid);$("groups").appendChild(box);
-});
-
-/* game */
-function startGame(){
-  names={1:$("n1").value.trim()||"الفريق الأول",2:$("n2").value.trim()||"الفريق الثاني"};
-  sc={1:0,2:0};used={};cur=null;
-  $("s1").textContent=0;$("s2").textContent=0;
-  $("l1").textContent=names[1];$("l2").textContent=names[2];
-  $("p1").textContent=names[1]+" جاوب صح";
-  $("p2").textContent=names[2]+" جاوب صح";
-  const b=$("board");b.innerHTML="";
-  [...picked].sort((x,y)=>x-y).forEach(ci=>{
-    const sec=document.createElement("section");sec.className="cat";
-    const h=document.createElement("h2");h.textContent=DATA[ci].name;sec.appendChild(h);
-    const row=document.createElement("div");row.className="row";
-    DATA[ci].qs.forEach((x,r)=>{
-      const btn=document.createElement("button");
-      btn.className="cell";btn.textContent=x.p;btn.id="c"+ci+"-"+r;
-      btn.addEventListener("click",()=>openQ(ci,r));
-      row.appendChild(btn);
-    });
-    sec.appendChild(row);b.appendChild(sec);
-  });
-  show("game");
-}
-const TIME=30;let tick=null;
-function stopTimer(){clearInterval(tick);tick=null}
-function startTimer(){
-  stopTimer();let t=TIME;const el=$("timer");
-  el.className="timer";el.textContent=t;
-  tick=setInterval(()=>{
-    t--;
-    if(t<=0){
-      $("show").click();
-      el.textContent="انتهى الوقت";el.className="timer low up";
-    }else{
-      el.textContent=t;
-      el.classList.toggle("low",t<=5);
-    }
-  },1000);
-}
-function openQ(ci,r){
-  const k=ci+"-"+r;if(used[k])return;
-  cur={ci,r,k};const x=DATA[ci].qs[r];
-  $("meta").textContent=DATA[ci].name+" · "+x.p+" نقطة";
-  $("q").textContent=x.q;$("a").textContent=x.a;
-  $("a").classList.add("hide");$("pick").classList.add("hide");$("show").classList.remove("hide");
-  startTimer();
-  $("modal").classList.add("open");
-}
-$("enter").addEventListener("click",()=>show("setup"));
-$("start").addEventListener("click",startGame);
-$("back").addEventListener("click",()=>show("setup"));
-$("show").addEventListener("click",()=>{
-  stopTimer();$("a").classList.remove("hide");$("pick").classList.remove("hide");$("show").classList.add("hide");
-});
-$("pick").addEventListener("click",e=>{
-  const t=e.target.dataset.t;if(t===undefined||!cur)return;
-  const x=DATA[cur.ci].qs[cur.r];
-  if(t!=="0"){sc[t]+=x.p;$("s"+t).textContent=sc[t]}
-  used[cur.k]=true;$("c"+cur.k).classList.add("used");
-  cur=null;$("modal").classList.remove("open");
-});
+addQ("is",200,["كم عدد أركان الإسلام؟|خمسة"]);
+addQ("is",400,["شو أول سورة في القرآن الكريم؟|سورة الفاتحة"]);
+addQ("is",600,["كم عدد سور القرآن الكريم؟|114 سورة"]);
+addQ("an",200,["شو أسرع حيوان بري في العالم؟|الفهد (الشيتا)"]);
+addQ("an",400,["شو أكبر حيوان في العالم؟|الحوت الأزرق"]);
+addQ("an",600,["كم عدد قلوب الأخطبوط؟|ثلاثة قلوب"]);
+addQ("sc",200,["شو الكوكب الأقرب للشمس؟|عطارد"]);
+addQ("sc",400,["شو الغاز اللي بنتنفسه وبنحتاجه للحياة؟|الأكسجين"]);
+addQ("sc",600,["كم عدد عظام جسم الإنسان البالغ؟|206 عظمات"]);
+addQ("pr",200,["أكمل المثل: الجار قبل …|الدار"]);
+addQ("pr",400,["أكمل المثل: العين ما بتعلى على …|الحاجب"]);
+addQ("pr",600,["أكمل المثل: اللي ما يعرف الصقر …|يشويه"]);
+addQ("fd",200,["شو المكوّن الأساسي للحمّص؟|حبّ الحمّص (مع الطحينة)"]);
+addQ("fd",400,["من أي نبات بنستخرج الطحينة؟|السمسم"]);
+addQ("fd",600,["من أي بلد أصل البيتزا؟|إيطاليا"]);
+addQ("ge",200,["شو عاصمة مصر؟|القاهرة"]);
+addQ("ge",400,["شو أكبر محيط في العالم؟|المحيط الهادئ"]);
+addQ("ge",600,["شو أصغر دولة في العالم مساحةً؟|الفاتيكان"]);
+addQ("co",200,["شو أكبر دولة في العالم مساحةً؟|روسيا"]);
+addQ("co",400,["شو أكثر دولة في العالم بعدد السكان؟|الهند"]);
+addQ("co",600,["كم عدد الدول الأعضاء في جامعة الدول العربية؟|22 دولة"]);
+addQ("fl",200,["لأي دولة هذا العلم؟ 🇯🇴|الأردن"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇧🇷|البرازيل"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇨🇭|سويسرا"]);
+addQ("lm",200,["في أي دولة موجودة أهرامات الجيزة؟|مصر"]);
+addQ("lm",400,["في أي دولة موجودة مدينة البتراء الأثرية؟|الأردن"]);
+addQ("lm",600,["في أي دولة يوجد معبد أنكور وات؟|كمبوديا"]);
+addQ("jt",200,["شو لقب المنتخب الأردني لكرة القدم؟|النشامى"]);
+addQ("jt",400,["شو اسم الجناح الأردني المعروف اللي لعب بنادي مونبلييه الفرنسي؟|موسى التعمري"]);
+addQ("jt",600,["في أي بطولة وصل النشامى لأول نهائي بتاريخهم؟|كأس آسيا (انلعبت بقطر)"]);
+addQ("jf",200,["شو الأكلة الوطنية الأردنية المشهورة؟|المنسف"]);
+addQ("jf",400,["شو اسم أكلة الدجاج مع البصل والسماق على خبز الطابون؟|المسخن"]);
+addQ("jf",600,["شو اسم الأكلة البدوية اللي بتنطبخ باللحم والخضار تحت الأرض؟|الزرب"]);
+addQ("ay",200,["أكمل الآية: ﴿قل هو الله أحد، الله …﴾|الصمد"]);
+addQ("ay",400,["أكمل الآية: ﴿فإن مع العسر …﴾|يسرًا"]);
+addQ("ay",600,["أكمل الآية: ﴿ألا بذكر الله …﴾|تطمئن القلوب"]);
+addQ("cb",200,["من أي بلد ماركة تويوتا؟|اليابان"]);
+addQ("cb",400,["من أي بلد ماركة بي إم دبليو؟|ألمانيا"]);
+addQ("cb",600,["من أي بلد أصل ماركة فولفو؟|السويد"]);
+addQ("ct",200,["شو اسم السيارة اللي صندوقها الخلفي مفتوح وبتستخدم للنقل؟|بيك أب"]);
+addQ("ct",400,["شو بنسمي السيارة اللي بتجمع بين محرك بنزين ومحرك كهربائي؟|سيارة هايبرد (هجينة)"]);
+addQ("ct",600,["شو معنى الحروف SUV؟|Sport Utility Vehicle (سيارة رياضية متعددة الاستخدامات)"]);
+addQ("el",200,["شو اسم القطعة اللي بتعتبر عقل الكمبيوتر؟|المعالج (CPU)"]);
+addQ("el",400,["شو معنى الحروف USB؟|Universal Serial Bus"]);
+addQ("el",600,["شو معنى الحروف RAM؟|ذاكرة الوصول العشوائي (Random Access Memory)"]);
+addQ("tc",200,["أي شركة بتصنّع الآيفون؟|آبل"]);
+addQ("tc",400,["أي شركة بتصنّع هواتف غالاكسي؟|سامسونج"]);
+addQ("tc",600,["أي شركة أسسها بيل غيتس وبول ألين؟|مايكروسوفت"]);
+addQ("ay",200,["أكمل الآية: ﴿الحمد لله رب …﴾|العالمين"]);
+addQ("ay",400,["أكمل الآية: ﴿ولسوف يعطيك ربك …﴾|فترضى"]);
+addQ("ay",600,["أكمل الآية: ﴿والعصر، إن الإنسان لفي …﴾|خسر"]);
+addQ("an",200,["شو الحيوان اللي بنسميه ملك الغابة؟|الأسد"]);
+addQ("an",400,["شو أكبر طير في العالم وما بيقدر يطير؟|النعامة"]);
+addQ("an",600,["شو اسم صغير الكنغر؟|جوي (Joey)"]);
+addQ("sc",200,["كم عدد كواكب المجموعة الشمسية؟|8 كواكب"]);
+addQ("sc",400,["شو الرمز الكيميائي للماء؟|H2O"]);
+addQ("sc",600,["شو الغاز اللي بتمتصه النباتات من الجو بالتمثيل الضوئي؟|ثاني أكسيد الكربون"]);
+addQ("pr",200,["أكمل المثل: الصاحب …|ساحب"]);
+addQ("pr",400,["أكمل المثل: اللي إيدو بالمي …|مش زي اللي إيدو بالنار"]);
+addQ("pr",600,["أكمل المثل: الصبر …|مفتاح الفرج"]);
+addQ("fd",200,["من أي بلد أصل السوشي؟|اليابان"]);
+addQ("fd",400,["شو الأكلة اللي أساسها البرغل والبقدونس والطماطم؟|التبولة"]);
+addQ("fd",600,["من أي بلد أصل التاكو؟|المكسيك"]);
+addQ("ge",200,["شو أطول نهر في أفريقيا؟|نهر النيل"]);
+addQ("ge",400,["شو عاصمة اليابان؟|طوكيو"]);
+addQ("ge",600,["شو أعلى قمة جبل في العالم؟|إيفرست"]);
+addQ("co",200,["شو عاصمة السعودية؟|الرياض"]);
+addQ("co",400,["شو عاصمة تركيا؟|أنقرة"]);
+addQ("co",600,["شو عاصمة أستراليا؟|كانبيرا"]);
+addQ("fl",200,["لأي دولة هذا العلم؟ 🇪🇬|مصر"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇯🇵|اليابان"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇳🇴|النرويج"]);
+addQ("lm",200,["في أي مدينة يوجد برج إيفل؟|باريس"]);
+addQ("lm",400,["في أي دولة يوجد تاج محل؟|الهند"]);
+addQ("lm",600,["في أي دولة يوجد موقع ماتشو بيتشو؟|بيرو"]);
+addQ("jt",200,["شو اسم الملعب الدولي الرئيسي بعمّان؟|ملعب عمّان الدولي"]);
+addQ("jt",400,["مين كان مدرب النشامى بكأس آسيا 2023؟|الحسين عموتة"]);
+addQ("jt",600,["بأي سنة كانت أول مشاركة للأردن بكأس آسيا؟|2004"]);
+addQ("jf",200,["شو اسم الحلوى الأردنية المشهورة بالجبنة والقطر؟|الكنافة"]);
+addQ("jf",400,["شو اسم أكلة الأرز والباذنجان والدجاج اللي بتنقلب على نفسها؟|المقلوبة"]);
+addQ("jf",600,["شو اسم اللبن المجفف اللي بنستعملو بالمنسف؟|الجميد"]);
+addQ("cb",200,["من أي بلد ماركة مرسيدس؟|ألمانيا"]);
+addQ("cb",400,["من أي بلد ماركة هيونداي؟|كوريا الجنوبية"]);
+addQ("cb",600,["من أي بلد ماركة سكودا؟|التشيك"]);
+addQ("ct",200,["شو بنسمي السيارة اللي بتمشي على الكهربا بس؟|سيارة كهربائية"]);
+addQ("ct",400,["شو معنى الحروف ABS بالسيارات؟|نظام منع انغلاق المكابح (Anti-lock Braking System)"]);
+addQ("ct",600,["شو بنسمي السيارة اللي سقفها بينفتح أو بينشال؟|كونفرتيبل (مكشوفة)"]);
+addQ("el",200,["شو اسم الجهاز اللي بنكتب فيه على الكمبيوتر؟|لوحة المفاتيح"]);
+addQ("el",400,["شو معنى الحروف GPS؟|نظام تحديد المواقع العالمي"]);
+addQ("el",600,["شو معنى الحروف SSD؟|Solid State Drive (قرص تخزين)"]);
+addQ("tc",200,["أي شركة بتملك يوتيوب؟|جوجل"]);
+addQ("tc",400,["أي شركة أسسها ستيف جوبز مع ستيف وزنياك؟|آبل"]);
+addQ("tc",600,["شو اسم الشركة الأم لفيسبوك وإنستغرام وواتساب؟|ميتا"]);
+/* دفعة أسئلة 2 */
+addQ("is",200,["كم عدد الصلوات المفروضة باليوم؟|5"]);
+addQ("is",200,["شو اسم كتاب المسلمين المقدس؟|القرآن الكريم"]);
+addQ("is",400,["شو أول مسجد بُني بالإسلام؟|مسجد قباء"]);
+addQ("is",400,["شو اسم الليلة اللي نزل فيها القرآن؟|ليلة القدر"]);
+addQ("is",600,["كم عدد الأنبياء المذكورين بالقرآن بالاسم؟|25 نبي"]);
+addQ("is",600,["شو اسم أم النبي محمد ﷺ؟|آمنة بنت وهب"]);
+addQ("ay",200,["أكمل الآية: ﴿قل أعوذ برب …﴾|الفلق"]);
+addQ("ay",200,["أكمل الآية: ﴿وما خلقت الجن والإنس إلا …﴾|ليعبدون"]);
+addQ("ay",400,["أكمل الآية: ﴿ومن يتق الله يجعل له …﴾|مخرجًا"]);
+addQ("ay",400,["أكمل الآية: ﴿وجعلنا من الماء كل شيء …﴾|حي"]);
+addQ("ay",600,["أكمل الآية: ﴿إن الله لا يغير ما بقوم حتى يغيروا ما …﴾|بأنفسهم"]);
+addQ("ay",600,["أكمل الآية: ﴿ولقد يسرنا القرآن …﴾|للذكر"]);
+addQ("an",200,["شو أطول حيوان بالعالم؟|الزرافة"]);
+addQ("an",200,["شو الحشرة اللي بتعطينا العسل؟|النحلة"]);
+addQ("an",400,["كم رجل للعنكبوت؟|8"]);
+addQ("an",400,["شو الحيوان الثديي الوحيد اللي بيطير؟|الخفاش"]);
+addQ("an",600,["شو أبطأ حيوان بالعالم؟|الكسلان"]);
+addQ("an",600,["شو أكبر قط بري بالعالم؟|النمر (التايغر)"]);
+addQ("sc",200,["شو الكوكب اللي حوله حلقات مشهورة؟|زحل"]);
+addQ("sc",200,["شو أقرب نجم للأرض؟|الشمس"]);
+addQ("sc",400,["كم لون بقوس قزح؟|7"]);
+addQ("sc",400,["شو المعدن السائل بدرجة حرارة الغرفة؟|الزئبق"]);
+addQ("sc",600,["شو وحدة قياس القوة؟|النيوتن"]);
+addQ("sc",600,["شو العنصر اللي رقمه الذري 1؟|الهيدروجين"]);
+addQ("pr",200,["أكمل المثل: ضربة المعلم …|بألف"]);
+addQ("pr",200,["أكمل المثل: القرد بعين أمو …|غزال"]);
+addQ("pr",400,["أكمل المثل: درهم وقاية خير من …|قنطار علاج"]);
+addQ("pr",400,["أكمل المثل: ما حك جلدك مثل …|ظفرك"]);
+addQ("pr",600,["أكمل المثل: إجا يكحلها …|عماها"]);
+addQ("pr",600,["أكمل المثل: اللي استحوا …|ماتوا"]);
+addQ("gn",200,["كم يوم بالسنة الكبيسة؟|366"]);
+addQ("gn",200,["شو أكبر قارة بالعالم؟|آسيا"]);
+addQ("gn",400,["شو أكثر لغة بالعالم عدد متحدثيها كلغة أم؟|الصينية (الماندرين)"]);
+addQ("gn",400,["شو العملة الرسمية لليابان؟|الين"]);
+addQ("gn",600,["شو أطول نهر بأمريكا الجنوبية؟|الأمازون"]);
+addQ("gn",600,["شو العملة الرسمية لبريطانيا؟|الجنيه الإسترليني"]);
+addQ("fd",200,["شو اسم الأكلة السعودية الشهيرة بالأرز واللحم والبهارات؟|الكبسة"]);
+addQ("fd",200,["من أي بلد أصل الكشري؟|مصر"]);
+addQ("fd",400,["شو اسم الحلوى المصرية بالسميد والقطر؟|البسبوسة"]);
+addQ("fd",400,["شو أشهر أكلة فطور مصرية من الفول؟|فول مدمس"]);
+addQ("fd",600,["من أي بلد أصل الباييلا؟|إسبانيا"]);
+addQ("fd",600,["من أي بلد أصل الكيمتشي؟|كوريا"]);
+addQ("ge",200,["شو عاصمة فرنسا؟|باريس"]);
+addQ("ge",200,["شو عاصمة الأردن؟|عمّان"]);
+addQ("ge",400,["شو أكبر صحراء حارة بالعالم؟|الصحراء الكبرى"]);
+addQ("ge",400,["شو عاصمة كندا؟|أوتاوا"]);
+addQ("ge",600,["شو أطول نهر بآسيا؟|اليانغتسي"]);
+addQ("ge",600,["شو أعمق بحيرة بالعالم؟|بحيرة بايكال"]);
+addQ("co",200,["شو عاصمة الإمارات؟|أبوظبي"]);
+addQ("co",200,["شو عاصمة قطر؟|الدوحة"]);
+addQ("co",400,["شو عاصمة إسبانيا؟|مدريد"]);
+addQ("co",400,["شو عاصمة البرازيل؟|برازيليا"]);
+addQ("co",600,["شو عاصمة كازاخستان؟|أستانا"]);
+addQ("co",600,["شو عاصمة نيجيريا؟|أبوجا"]);
+addQ("fl",200,["لأي دولة هذا العلم؟ 🇫🇷|فرنسا"]);
+addQ("fl",200,["لأي دولة هذا العلم؟ 🇩🇪|ألمانيا"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇨🇦|كندا"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇮🇹|إيطاليا"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇳🇵|نيبال"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇮🇪|أيرلندا"]);
+addQ("lm",200,["في أي دولة يوجد برج بيزا المائل؟|إيطاليا"]);
+addQ("lm",200,["في أي مدينة يوجد برج خليفة؟|دبي"]);
+addQ("lm",400,["في أي دولة يوجد تمثال الحرية؟|أمريكا"]);
+addQ("lm",400,["في أي مدينة يوجد الكولوسيوم؟|روما"]);
+addQ("lm",600,["في أي دولة يوجد جبل فوجي؟|اليابان"]);
+addQ("lm",600,["في أي مدينة يوجد برج بيغ بن؟|لندن"]);
+addQ("ar",200,["شو عاصمة الجزائر؟|الجزائر"]);
+addQ("ar",200,["شو عاصمة العراق؟|بغداد"]);
+addQ("ar",400,["شو عاصمة تونس؟|تونس"]);
+addQ("ar",400,["شو عاصمة الكويت؟|مدينة الكويت"]);
+addQ("ar",600,["شو عاصمة اليمن؟|صنعاء"]);
+addQ("ar",600,["شو عاصمة جيبوتي؟|جيبوتي"]);
+addQ("cb",200,["من أي بلد ماركة هوندا؟|اليابان"]);
+addQ("cb",200,["من أي بلد ماركة فورد؟|أمريكا"]);
+addQ("cb",400,["من أي بلد ماركة رينو؟|فرنسا"]);
+addQ("cb",400,["من أي بلد ماركة كيا؟|كوريا الجنوبية"]);
+addQ("cb",600,["من أي بلد ماركة لامبورغيني؟|إيطاليا"]);
+addQ("cb",600,["من أي بلد ماركة أودي؟|ألمانيا"]);
+addQ("ct",200,["شو بنسمي الجزء اللي بنغير فيه سرعات السيارة؟|القير (ناقل الحركة)"]);
+addQ("ct",200,["شو بنسمي السيارة العائلية الكبيرة اللي بتتسع لركاب أكتر؟|فان (ميني فان)"]);
+addQ("ct",400,["شو بنسمي السيارة الرياضية ذات البابين؟|كوبيه"]);
+addQ("ct",400,["شو معنى الحروف AC بالسيارة؟|تكييف الهواء"]);
+addQ("ct",600,["شو معنى الحروف 4WD؟|الدفع الرباعي"]);
+addQ("ct",600,["شو معنى الحروف RPM؟|عدد دورات المحرك بالدقيقة"]);
+addQ("el",200,["شو اسم الجهاز اللي بنحرك فيه المؤشر؟|الماوس"]);
+addQ("el",200,["شو اسم شاشة الكمبيوتر بالإنجليزي؟|Monitor"]);
+addQ("el",400,["شو معنى الحروف HDMI؟|High-Definition Multimedia Interface"]);
+addQ("el",400,["شو معنى الحروف LED؟|Light Emitting Diode"]);
+addQ("el",600,["شو معنى الحروف GPU؟|وحدة معالجة الرسوميات"]);
+addQ("el",600,["شو معنى الحروف PDF؟|Portable Document Format"]);
+addQ("tc",200,["أي شركة بتصنّع بلايستيشن؟|سوني"]);
+addQ("tc",200,["أي شركة بتملك واتساب؟|ميتا"]);
+addQ("tc",400,["أي شركة بتصنّع هواتف بكسل؟|جوجل"]);
+addQ("tc",400,["أي شركة بتصنّع معالجات Core i7؟|إنتل"]);
+addQ("tc",600,["أي شركة بتملك لينكدإن؟|مايكروسوفت"]);
+addQ("tc",600,["أي شركة صنعت شات جي بي تي؟|OpenAI"]);
+addQ("ap",200,["تطبيق شعاره حرف f أزرق؟|فيسبوك"]);
+addQ("ap",200,["تطبيق شعاره مثلث أحمر؟|يوتيوب"]);
+addQ("ap",400,["تطبيق مكالمات فيديو شعاره كاميرا زرقاء ومشهور بالاجتماعات؟|زووم"]);
+addQ("ap",400,["تطبيق الطائر الأزرق اللي صار اسمه X؟|تويتر"]);
+addQ("ap",600,["تطبيق دردشة للاعبين شعاره يد تحكم زرقاء؟|ديسكورد"]);
+addQ("ap",600,["تطبيق صور وأفكار شعاره حرف P أحمر؟|بنترست"]);
+addQ("jt",200,["بأي دولة انلعبت كأس آسيا 2023؟|قطر"]);
+addQ("jt",200,["بأي قارة بيلعب النشامى تصفياتهم؟|آسيا"]);
+addQ("jt",400,["أي منتخب كبير فاز عليه النشامى بنصف نهائي كأس آسيا 2023؟|كوريا الجنوبية"]);
+addQ("jf",200,["شو اسم الخبز الرقيق الأردني اللي بنستعملو مع المنسف؟|الشراك"]);
+addQ("jf",200,["شو اسم الأكلة من الباذنجان المشوي والطحينة؟|المتبل (بابا غنوج)"]);
+addQ("jf",400,["شو اسم أكلة العدس والأرز والبصل المقرمش؟|المجدرة"]);
+addQ("jf",400,["شو اسم أكلة أوراق العنب المحشية؟|ورق دوالي"]);
+addQ("jf",600,["شو اسم الأكلة الشعبية بالبندورة والبيض؟|قلاية البندورة"]);
+addQ("jf",600,["شو اسم الشاي الأردني بالنبتة المشهورة؟|شاي بالمرمية"]);
+addQ("jo",200,["في أي محافظة تقع عمّان العاصمة؟|محافظة العاصمة"]);
+addQ("jo",200,["أين يقع البحر الميت؟|غرب الأردن (الأغوار)"]);
+addQ("jo",400,["في أي محافظة تقع مدينة مادبا؟|مادبا"]);
+addQ("jo",400,["في أي مدينة تقع جامعة اليرموك؟|إربد"]);
+addQ("jo",600,["في أي محافظة تقع بلدة وادي موسى؟|معان"]);
+addQ("jo",600,["في أي محافظة تقع محمية ضانا؟|الطفيلة"]);
+addQ("br",200,["شو اسم شركة اتصالات أردنية بتعني 'الأماني'؟|أمنية"]);
+addQ("br",200,["شو اسم الجامعة الحكومية الأقدم بالأردن؟|الجامعة الأردنية"]);
+addQ("br",400,["شو اسم البورصة الأردنية؟|بورصة عمّان"]);
+addQ("br",600,["شو اسم الميناء الأردني الوحيد؟|ميناء العقبة"]);
+addQ("br",600,["شو اسم الجسر بين الأردن والضفة الغربية قرب أريحا؟|جسر الملك حسين"]);
+addQ("mv",200,["شو اسم السمكة الصفراء الصغيرة بفيلم Finding Nemo؟|نيمو"]);
+addQ("mv",200,["شو اسم فيلم الأنيميشن عن الأميرة إلسا والثلج؟|Frozen"]);
+addQ("mv",400,["مين لعب دور جاك سبارو؟|جوني ديب"]);
+addQ("mv",400,["شو اسم فيلم الأنيميشن اللي بطله غول أخضر؟|شريك"]);
+addQ("mv",600,["مين مخرج فيلم Titanic؟|جيمس كاميرون"]);
+addQ("mv",600,["مين لعب دور الجوكر بفيلم 2019 وفاز بالأوسكار؟|واكين فينيكس"]);
+addQ("tr",200,["شو اسم القبيلة بمسلسل قيامة أرطغرل؟|قايي"]);
+addQ("tr",200,["مسلسل تركي عن عثمان مؤسس الدولة العثمانية؟|قيامة عثمان (المؤسس عثمان)"]);
+addQ("tr",400,["مسلسل تركي مدبلج بطلاه كمال ونهان؟|العشق الأسود"]);
+addQ("tr",600,["مين لعبت دور نهان بالعشق الأسود؟|نسليهان أتاغول"]);
+addQ("tr",600,["مين لعب دور أرطغرل؟|إنجين ألتان دوزياتان"]);
+addQ("sp",200,["كم دقيقة الشوط بكرة القدم؟|45 دقيقة"]);
+addQ("sp",200,["شو أهم بطولة أندية بأوروبا؟|دوري أبطال أوروبا"]);
+addQ("sp",400,["بأي دولة بدأت الألعاب الأولمبية القديمة؟|اليونان"]);
+addQ("sp",400,["كم نقطة بتسجل رمية الجزاء بكرة السلة؟|نقطة وحدة"]);
+addQ("sp",600,["مين الملقب بالملك بكرة القدم؟|بيليه"]);
+addQ("sp",600,["بأي دولة انلعب أولمبياد 2024؟|فرنسا (باريس)"]);
+/* دفعة أسئلة 3 */
+addQ("jo",200,["أين يقع ميناء العقبة؟|أقصى جنوب الأردن على البحر الأحمر"]);
+addQ("jo",200,["أين يقع مطار الملكة علياء الدولي؟|جنوب عمّان"]);
+addQ("jo",200,["في أي محافظة تقع مدينة الزرقاء؟|الزرقاء"]);
+addQ("jo",200,["أين تقع مدينة معان؟|جنوب الأردن"]);
+addQ("jo",200,["أين تقع مدينة الطفيلة؟|جنوب الأردن"]);
+addQ("jo",200,["أين تقع مدينة المفرق؟|شمال شرق الأردن"]);
+addQ("jo",200,["أين تقع مدينة عجلون؟|شمال الأردن"]);
+addQ("jo",400,["في أي محافظة تقع مدينة الرمثا؟|إربد"]);
+addQ("jo",400,["أين يقع جبل أم الدامي أعلى قمة بالأردن؟|جنوب الأردن قرب وادي رم"]);
+addQ("jo",400,["أين يقع سد الملك طلال؟|بين جرش وعجلون"]);
+addQ("jo",400,["في أي محافظة تقع أم الجمال الأثرية؟|المفرق"]);
+addQ("jo",400,["أين تقع محمية الشومري؟|منطقة الأزرق"]);
+addQ("jo",400,["أين يقع المغطس موقع معمودية السيد المسيح؟|الأغوار قرب نهر الأردن"]);
+addQ("jo",400,["في أي مدينة تقع جامعة مؤتة؟|الكرك"]);
+addQ("jo",600,["في أي محافظة تقع بلدة المزار الجنوبي؟|الكرك"]);
+addQ("jo",600,["أين يقع قصر المشتى؟|قرب مطار الملكة علياء"]);
+addQ("jo",600,["أين يقع قصر عمرة؟|الصحراء الشرقية (محافظة الزرقاء)"]);
+addQ("jo",600,["أين يقع وادي الموجب؟|بين الكرك ومادبا"]);
+addQ("jo",600,["أين تقع حمامات ماعين؟|مادبا"]);
+addQ("jo",600,["أين تقع غابات دبين؟|محافظة جرش"]);
+addQ("jo",600,["في أي محافظة تقع بلدة ذيبان؟|مادبا"]);
+addQ("br",200,["شو اسم مطار العقبة؟|مطار الملك حسين الدولي"]);
+addQ("br",200,["شو اسم المهرجان الثقافي السنوي بمدينة جرش؟|مهرجان جرش"]);
+addQ("br",200,["شو اسم شركة الاتصالات اللي كان اسمها القديم فاست لنك؟|زين"]);
+addQ("br",200,["شو اسم محطة الراديو الأردنية المشهورة 'هلا'؟|هلا إف إم"]);
+addQ("br",200,["شو اسم البنك الأردني اللي اسمه بيذكر السكن؟|بنك الإسكان"]);
+addQ("br",200,["أي جامعة أردنية اسمها من معركة تاريخية بالكرك؟|مؤتة"]);
+addQ("br",200,["شو اسم راديو أردني مشهور اسمه مأخوذ من وسط عمّان؟|راديو البلد"]);
+addQ("br",400,["شو اسم القناة الأردنية الرسمية؟|التلفزيون الأردني"]);
+addQ("br",400,["شو اسم الجريدة الأردنية اللي صدرت 1971؟|الرأي"]);
+addQ("br",400,["شو اسم وكالة الأنباء الأردنية الرسمية؟|بترا"]);
+addQ("br",400,["شو اسم شركة الأدوية الأردنية 'دار ...'؟|دار الدواء"]);
+addQ("br",400,["شو اسم شركة الإسمنت الأردنية بالفحيص؟|مصانع الإسمنت الأردنية"]);
+addQ("br",400,["شو اسم شركة المناجم الأردنية للفوسفات؟|شركة مناجم الفوسفات الأردنية"]);
+addQ("br",600,["شو كان الاسم الأول للملكية الأردنية عام 1963؟|عالية"]);
+addQ("br",600,["شو اسم الشركة المشغلة للمياه بعمّان؟|مياهنا"]);
+addQ("br",600,["شو اسم الشركة الوطنية للصناعات الدوائية؟|الحكمة"]);
+addQ("ap",200,["تطبيق خرائط من جوجل؟|جوجل مابس"]);
+addQ("ap",200,["تطبيق بريد جوجل؟|جيميل"]);
+addQ("ap",200,["لعبة بناء وتعدين بمكعبات؟|ماين كرافت"]);
+addQ("ap",200,["تطبيق توصيل طعام شعاره برتقالي؟|طلبات"]);
+addQ("ap",200,["تطبيق توصيل ركاب شعاره أسود؟|أوبر"]);
+addQ("ap",200,["تطبيق تسوق شعاره برتقالي ورخيص؟|تيمو"]);
+addQ("ap",200,["تطبيق تسوق شعاره سهم أصفر؟|أمازون"]);
+addQ("ap",400,["تطبيق الموسوعة الحرة؟|ويكيبيديا"]);
+addQ("ap",400,["تطبيق التوظيف الاحترافي شعاره in؟|لينكدإن"]);
+addQ("ap",400,["تطبيق ملاحة شعاره وجه أزرق مبتسم؟|ويز"]);
+addQ("ap",400,["تطبيق بث الألعاب شعاره بنفسجي؟|تويتش"]);
+addQ("ap",400,["تطبيق دفع إلكتروني شعاره P زرقاء؟|باي بال"]);
+addQ("ap",400,["تطبيق صيني أخضر للدردشة؟|وي تشات"]);
+addQ("ap",400,["تطبيق موسيقى عربي شعاره بنفسجي؟|أنغامي"]);
+addQ("ap",600,["تطبيق حجوزات فنادق شعاره أزرق؟|بوكينج"]);
+addQ("ap",600,["تطبيق حجز سكن شعاره وردي؟|إير بي إن بي"]);
+addQ("ap",600,["تطبيق تخزين سحابي شعاره صندوق أزرق؟|دروب بوكس"]);
+addQ("ap",600,["تطبيق ملاحظات شعاره فيل أخضر؟|إيفرنوت"]);
+addQ("ap",600,["تطبيق اجتماعات من مايكروسوفت؟|تيمز"]);
+addQ("ap",600,["تطبيق مراسلة آمن شعاره فقاعة زرقاء؟|سيجنال"]);
+addQ("ap",600,["تطبيق تصميم شعاره كانفا؟|كانفا"]);
+addQ("mv",200,["مين البطل الخارق اللي بيطلع شبكة من إيديه؟|سبايدرمان"]);
+addQ("mv",200,["مين البطل الليلي بمدينة غوثام؟|باتمان"]);
+addQ("mv",200,["شو اسم الروبوت الصغير اللي بينظف الأرض؟|وال-إي"]);
+addQ("mv",200,["شو اسم فيلم بيكسار عن السيارات؟|Cars"]);
+addQ("mv",200,["شو اسم أخو ثور الشرير؟|لوكي"]);
+addQ("mv",200,["فيلم عن مشاعر داخل رأس بنت؟|Inside Out"]);
+addQ("mv",200,["فيلم عن السمكة دوري؟|البحث عن دوري"]);
+addQ("mv",400,["مين لعب دور الجوكر بفيلم The Dark Knight؟|هيث ليدجر"]);
+addQ("mv",400,["مين لعب دور نيو بفيلم Matrix؟|كيانو ريفز"]);
+addQ("mv",400,["فيلم عن ديناصورات بحديقة؟|Jurassic Park"]);
+addQ("mv",400,["مين لعب دور هاري بوتر؟|دانيال رادكليف"]);
+addQ("mv",400,["مين مخرج فيلم Jaws؟|ستيفن سبيلبرغ"]);
+addQ("mv",400,["فيلم عن فتاة ووحش ورقصة بالقاعة؟|الجميلة والوحش"]);
+addQ("mv",400,["فيلم عن عائلة خارقة بلبس أحمر؟|The Incredibles"]);
+addQ("mv",600,["مين أخرج فيلم The Godfather؟|فرانسيس فورد كوبولا"]);
+addQ("mv",600,["مين لعب دور فيتو كورليوني؟|مارلون براندو"]);
+addQ("mv",600,["مين لعب دور فورست غامب؟|توم هانكس"]);
+addQ("mv",600,["مين مخرج فيلم Spirited Away؟|هاياو ميازاكي"]);
+addQ("mv",600,["مين لعب هانيبال ليكتر بفيلم صمت الحملان؟|أنتوني هوبكنز"]);
+addQ("mv",600,["مين لعب دور أوبنهايمر بفيلم 2023؟|كيليان مورفي"]);
+addQ("mv",600,["مين أخرجت فيلم Barbie 2023؟|غريتا غيرويغ"]);
+addQ("ar",200,["شو عاصمة لبنان؟|بيروت"]);
+addQ("ar",200,["شو عاصمة سوريا؟|دمشق"]);
+addQ("ar",200,["شو عاصمة ليبيا؟|طرابلس"]);
+addQ("ar",200,["شو عاصمة البحرين؟|المنامة"]);
+addQ("ar",200,["كم دولة بمجلس التعاون الخليجي؟|6 دول"]);
+addQ("ar",200,["أي دولة عربية الأكثر بعدد السكان؟|مصر"]);
+addQ("ar",200,["أي بحر بيطل عليه الأردن جنوباً؟|البحر الأحمر (خليج العقبة)"]);
+addQ("ar",400,["أي مضيق بين اليمن وجيبوتي؟|باب المندب"]);
+addQ("ar",400,["شو العملة الرسمية للسعودية؟|الريال"]);
+addQ("ar",400,["شو العملة الرسمية لمصر؟|الجنيه المصري"]);
+addQ("ar",400,["أي دولة بتلقب بلد المليون شهيد؟|الجزائر"]);
+addQ("ar",400,["أي دولة بتلقب بلاد الأرز؟|لبنان"]);
+addQ("ar",400,["أي دولة بتلقب بلاد الرافدين؟|العراق"]);
+addQ("ar",400,["شو العملة الرسمية للأردن؟|الدينار الأردني"]);
+addQ("ar",600,["شو أصغر دولة عربية بالمساحة؟|البحرين"]);
+addQ("ar",600,["شو العاصمة الاقتصادية للمغرب؟|الدار البيضاء"]);
+addQ("ar",600,["في أي دولة عربية يقع وادي الملوك؟|مصر"]);
+addQ("ar",600,["في أي دولة عربية تقع تدمر الأثرية؟|سوريا"]);
+addQ("ar",600,["في أي دولة عربية تقع قرطاج؟|تونس"]);
+addQ("ar",600,["في أي دولة عربية تقع لبدة الكبرى؟|ليبيا"]);
+addQ("ar",600,["في أي دولة عربية تقع بعلبك؟|لبنان"]);
+addQ("tr",200,["شو اسم والد عثمان بمسلسل قيامة عثمان؟|أرطغرل"]);
+addQ("tr",200,["مسلسل المافيا التركي اللي بطله يامان؟|الحفرة"]);
+addQ("tr",200,["مسلسل تركي بطلاه بهلول وبيهتر؟|العشق الممنوع"]);
+addQ("tr",200,["مسلسل تركي بطلاه سيران وفريد؟|الطائر الرفراف"]);
+addQ("tr",200,["مسلسل تركي بطلاه ريحان وأمير؟|العهد"]);
+addQ("tr",200,["مسلسل تركي عن السلطان عبد الحميد؟|السلطان عبد الحميد (Payitaht)"]);
+addQ("tr",200,["شو اسم زوجة أرطغرل بالمسلسل؟|حليمة سلطان"]);
+addQ("tr",400,["شو اسم والد أرطغرل؟|سليمان شاه"]);
+addQ("tr",400,["شو اسم زوجة عثمان بالمسلسل؟|بالا خاتون"]);
+addQ("tr",400,["مين لعبت دور حليمة بقيامة أرطغرل؟|إسراء بلجيك"]);
+addQ("tr",400,["مين لعب دور عثمان بقيامة عثمان؟|بوراك أوزتشفيت"]);
+addQ("tr",400,["مين لعبت دور ديفنة بحب للإيجار؟|إلتشين سانغو"]);
+addQ("tr",400,["مين لعب دور عمر بحب للإيجار؟|باريش أردوج"]);
+addQ("tr",400,["مين لعبت دور بيهتر بالعشق الممنوع؟|بيرين سات"]);
+addQ("tr",400,["شو العاصمة العثمانية القديمة قبل إسطنبول؟|إدرنة"]);
+addQ("tr",600,["مين لعب دور السلطان عبد الحميد بمسلسل عاصمة السلطان؟|بولنت إينال"]);
+addQ("tr",600,["شو اسم الشيخ الصوفي بقيامة عثمان؟|الشيخ أده بالي"]);
+addQ("tr",600,["شو اسم عاصمة السلاجقة؟|قونية"]);
+addQ("tr",600,["مين لعب دور فريد بالطائر الرفراف؟|مرت رمضان دمير"]);
+addQ("tr",600,["مين لعبت دور سيران بالطائر الرفراف؟|أفرا سراتشأوغلو"]);
+addQ("tr",600,["مين لعب دور يامان بالحفرة؟|أراس بولوت إينماي"]);
+addQ("tr",600,["كم موسم لمسلسل قيامة أرطغرل؟|5 مواسم"]);
+addQ("br",600,["شو اسم الجريدة الأردنية اليومية الصادرة من 1967؟|الدستور"]);
+var GR=[{t:"دين",i:["is","ay"]},{t:"منوّعات",i:["an","sc","pr","gn"]},{t:"بلاد وعالم",i:["fd","ge","co","fl","lm","ar"]},{t:"سيارات",i:["cb","ct"]},{t:"إلكترونيات",i:["el","tc","ap"]},{t:"الأردن",i:["jt","jf","jo","br"]},{t:"ترفيه ورياضة",i:["mv","tr","sp"]}],els={};
+function ref(){var n=sel.length;$("go").disabled=n===0;$("cn").textContent=n;Object.keys(els).forEach(function(i){els[i].classList.toggle("on",sel.indexOf(i)>-1)})}
+GR.forEach(function(g){var bx=document.createElement("div"),h=document.createElement("div"),t=document.createElement("h3"),al=document.createElement("button"),gd=document.createElement("div");
+h.className="gh";t.textContent=g.t;al.className="al";al.textContent="اختيار الكل";gd.className="cl";
+al.onclick=function(){var ev=g.i.every(function(i){return sel.indexOf(i)>-1});g.i.forEach(function(i){var k=sel.indexOf(i);if(ev&&k>-1)sel.splice(k,1);else if(!ev&&k<0)sel.push(i)});ref()};
+g.i.forEach(function(i){var c=cat(i),b=document.createElement("div");b.className="cp";b.innerHTML="<span>"+c.e+"</span>"+c.n;b.onclick=function(){var k=sel.indexOf(i);if(k>-1)sel.splice(k,1);else sel.push(i);ref()};els[i]=b;gd.appendChild(b)});
+h.appendChild(t);h.appendChild(al);bx.appendChild(h);bx.appendChild(gd);$("cl").appendChild(bx)});
+$("enter").onclick=function(){go("setup")};
+$("go").onclick=function(){G={c:C.map(function(x){return x.id}).filter(function(i){return sel.indexOf(i)>-1}),n:[$("n1").value.trim()||"الفريق الأول",$("n2").value.trim()||"الفريق الثاني"],s:[0,0],t:0,u:{},left:sel.length*6};draw();go("board")};
+function draw(){
+$("l1").textContent=G.n[0];$("l2").textContent=G.n[1];$("s1").textContent=G.s[0];$("s2").textContent=G.s[1];
+$("tn").textContent="الدور: "+G.n[G.t];
+$("bd").innerHTML=G.c.map(function(id){var c=cat(id);
+return '<div class="ct"><div class="im" style="background:'+(c.img?'url('+c.img+') center/cover':'linear-gradient(135deg,'+c.a+','+c.b+')')+'">'+(c.img?'':'<span>'+c.e+'</span>')+'</div><div class="cn">'+c.n+'</div><div class="tl">'+
+[200,400,600].map(function(l){return [0,1].map(function(k){var u=G.u[id+l+k];return '<button class="tb'+(u?' us':'')+'" data-c="'+id+'" data-l="'+l+'" data-k="'+k+'"'+(u?' disabled':'')+'>'+l+'</button>'}).join("")}).join("")+'</div></div>'}).join("")}
+$("bd").onclick=function(e){var b=e.target.closest(".tb");if(!b||b.disabled)return;ask(b.dataset.c,+b.dataset.l,b.dataset.c+b.dataset.l+b.dataset.k)};
+function ask(c,l,key){
+var o=(QB[c]&&QB[c][l])||[],k=c+l,seen=S[k]||[],av=[],i;
+for(i=0;i<o.length;i++)if(seen.indexOf(i)<0)av.push(i);
+if(!av.length){seen=[];for(i=0;i<o.length;i++)av.push(i)}
+var ix=av[Math.floor(Math.random()*av.length)],p=(o[ix]||"ما في أسئلة لهاي الخانة بعد|—").split("|");
+seen.push(ix);S[k]=seen;sv();cur={key:key,l:l};
+$("mp").textContent=l;$("mc").textContent=cat(c).n;$("mq").textContent=p[0];$("ma").textContent=p[1];
+$("ma").classList.add("hide");$("aw").classList.add("hide");$("sh").classList.remove("hide");
+$("w1").textContent="صح: "+G.n[0];$("w2").textContent="صح: "+G.n[1];
+var n=60;$("tm").textContent=n;$("tm").className="";clearInterval(ti);
+ti=setInterval(function(){n--;$("tm").textContent=Math.max(n,0);if(n<=10)$("tm").className="low";if(n<=0)clearInterval(ti)},1000);
+$("md").classList.add("on")}
+$("sh").onclick=function(){clearInterval(ti);$("ma").classList.remove("hide");$("aw").classList.remove("hide");$("sh").classList.add("hide")};
+function aw(w){clearInterval(ti);if(w>-1)G.s[w]+=cur.l;G.u[cur.key]=1;G.left--;G.t=1-G.t;$("md").classList.remove("on");draw();if(G.left<=0)fin()}
+$("w1").onclick=function(){aw(0)};$("w2").onclick=function(){aw(1)};$("w0").onclick=function(){aw(-1)};
+function fin(){
+var a=G.s[0],b=G.s[1];
+$("wn").textContent=a===b?"تعادل! 🤝":"🏆 الفائز: "+G.n[a>b?0:1];
+$("fs").innerHTML="";
+[0,1].forEach(function(i){var d=document.createElement("div");d.className="tm";d.style.background=i?"var(--t2)":"var(--t1)";var s=document.createElement("small"),bb=document.createElement("b");s.textContent=G.n[i];bb.textContent=G.s[i];d.appendChild(s);d.appendChild(bb);$("fs").appendChild(d)});
+go("end")}
+$("fin").onclick=fin;
+$("again").onclick=function(){go("setup")};
+})();
 </script>
+<script src="q2.js"></script>
+<script src="q3.js"></script>
 </body>
 </html>
