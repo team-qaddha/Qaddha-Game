@@ -4,6 +4,22 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%237A4A22%22/%3E%3Cg%20transform%3D%22translate%2810%208%29%20scale%28.68%29%22%3E%3Cpath%20d%3D%22M32%202c3%2011%2017%2017%2017%2035a17%2017%200%200%201-34%200c0-9%206-14%209-20%201%206%205%208%207%209-1-9-3-16%201-24z%22%20fill%3D%22%23F4C874%22/%3E%3C/g%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="قدّها">
+<meta property="og:title" content="قدّها - لعبة أسئلة للأصحاب والعيلة">
+<meta property="og:description" content="فرقتين وأسئلة عن الأردن والعرب والأفلام والتطبيقات والمزيد. بتقدر عليها؟">
+<meta property="og:url" content="https://team-qaddha.github.io/Qaddha-Game/">
+<meta property="og:image" content="https://team-qaddha.github.io/Qaddha-Game/share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="قدّها - لعبة أسئلة للأصحاب والعيلة">
+<meta name="twitter:description" content="فرقتين وأسئلة عن الأردن والعرب والأفلام والتطبيقات والمزيد. بتقدر عليها؟">
+<meta name="twitter:image" content="https://team-qaddha.github.io/Qaddha-Game/share.png">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#5A3820">
 <title>قدّها - لعبة أسئلة للأصحاب والعيلة</title>
 <meta name="description" content="قدّها: لعبة أسئلة عربية جماعية للأصحاب والعيلة، فئات أردنية وعربية وأفلام وتطبيقات ومسلسلات.">
@@ -28,6 +44,20 @@ h2{font-size:1.2rem;margin:18px 0 10px;color:var(--accent);font-weight:800}
 .cl{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .cp{display:flex;align-items:center;justify-content:center;gap:6px;min-height:54px;border:2px solid var(--accent);border-radius:12px;color:var(--accent);font-weight:800;text-align:center;cursor:pointer;padding:4px}
 .cp.on{background:var(--accent);color:var(--on)}
+.cl{gap:12px}
+.cc{position:relative;border-radius:18px;overflow:hidden;cursor:pointer;border:3px solid transparent;background:#6B4423;box-shadow:0 2px 8px rgba(0,0,0,.25);transition:opacity .15s,transform .15s}
+.cc.on{border-color:#F4C874;box-shadow:0 0 0 3px rgba(244,200,116,.6)}
+.cc.dim{opacity:.45}
+.pic{height:112px;background-color:#E9D3AE;background-image:repeating-linear-gradient(90deg,rgba(122,74,34,.12) 0 2px,transparent 2px 14px);position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;border-bottom:3px solid #3E2514}
+.pic:before{content:"";position:absolute;width:150px;height:150px;border-radius:50%;background:rgba(255,246,228,.6);top:-45px;right:-45px}
+.pic .e1{font-size:3.6rem;position:relative}
+.pic .e2,.pic .e3{position:absolute;font-size:1.6rem}
+.pic .e2{top:8px;left:10px}.pic .e3{bottom:8px;right:10px}
+.ck{display:none;position:absolute;top:8px;right:8px;z-index:2;width:28px;height:28px;border-radius:50%;background:#2E7D32;color:#fff;font-style:normal;font-weight:800;align-items:center;justify-content:center}
+.cc.on .ck{display:flex}
+.lb{background:#6B4423;color:#FFF1DC;text-align:center;font-weight:800;padding:9px 4px;font-size:.95rem}
+.im b{position:absolute;font-size:1.3rem;font-weight:400}.im .s1{top:6px;left:8px}.im .s2{bottom:6px;right:8px}
+
 .gh{display:flex;justify-content:space-between;align-items:center;margin:16px 0 8px}.gh h3{margin:0;font-size:1.05rem}.al{background:none;border:0;color:var(--accent);font:800 .9rem "Tajawal",sans-serif;cursor:pointer}
 .nm{display:grid;gap:10px}.nm label{font-weight:500;color:var(--muted);display:block;margin-bottom:4px}
 .nm input{width:100%;border:2px solid var(--line);border-radius:12px;padding:12px;font:500 1rem "Tajawal",sans-serif;color:var(--ink)}
@@ -72,7 +102,7 @@ h2{font-size:1.2rem;margin:18px 0 10px;color:var(--accent);font-weight:800}
 
 <section id="setup" class="hide">
 <h1 style="font-size:2.2rem;text-align:center">جهّز اللعبة</h1>
-<h2>اختار الفئات · <span id="cn">0</span></h2>
+<h2>اختار 6 فئات · <span id="cn">0</span>/6</h2>
 <div id="cl"></div>
 <h2>أسماء الفرق</h2>
 <div class="nm">
@@ -101,7 +131,7 @@ h2{font-size:1.2rem;margin:18px 0 10px;color:var(--accent);font-weight:800}
 </section>
 
 <div id="md"><div class="cd">
-<div class="mt"><span id="mp"></span><span id="mc"></span><span id="tm">60</span></div>
+<div class="mt"><span id="mp"></span><span id="mc"></span></div>
 <div class="q" id="mq"></div>
 <div class="a hide" id="ma"></div>
 <button class="b b2" id="sh">اعرض الجواب</button>
@@ -137,6 +167,8 @@ var C=[
 {id:"br",n:"شعارات وماركات أردنية",e:"🏷️",a:"#E0603A",b:"#8E3317"},
 {id:"mv",n:"أفلام أجنبية",e:"🎬",a:"#6B4E9B",b:"#3A2766"},
 {id:"tr",n:"مسلسلات تركية",e:"📺",a:"#B5483A",b:"#5E1C14"},
+{id:"hf",n:"مسلسل الحفرة",e:"🕳️",a:"#6B6B6B",b:"#2B2B2B"},
+{id:"bh",n:"مسلسل باب الحارة",e:"🚪",a:"#B8743A",b:"#6B3B14"},
 {id:"sp",n:"رياضة",e:"⚽",a:"#3FA34D",b:"#1E5E2A"}
 ];
 var QB=window.QB={},S={},G,cur,ti,sel=[];
@@ -867,20 +899,247 @@ addQ("tc",600,["أي شركة تايوانية أكبر مصنّع رقائق ب
 addQ("tc",600,["أي شركة اشترت واتساب سنة 2014؟|فيسبوك (ميتا)"]);
 addQ("tc",600,["أي شركة بتصنّع آيباد؟|آبل"]);
 addQ("tc",600,["أي شركة كورية بتصنّع شاشات وأجهزة LG؟|إل جي"]);
-var GR=[{t:"دين",i:["is","ay"]},{t:"منوّعات",i:["an","sc","pr","gn"]},{t:"بلاد وعالم",i:["fd","ge","co","fl","lm","ar"]},{t:"سيارات",i:["cb","ct"]},{t:"إلكترونيات",i:["el","tc","ap"]},{t:"الأردن",i:["jt","jf","jo","br"]},{t:"ترفيه ورياضة",i:["mv","tr","sp"]}],els={};
-function ref(){var n=sel.length;$("go").disabled=n===0;$("cn").textContent=n;Object.keys(els).forEach(function(i){els[i].classList.toggle("on",sel.indexOf(i)>-1)})}
-GR.forEach(function(g){var bx=document.createElement("div"),h=document.createElement("div"),t=document.createElement("h3"),al=document.createElement("button"),gd=document.createElement("div");
-h.className="gh";t.textContent=g.t;al.className="al";al.textContent="اختيار الكل";gd.className="cl";
-al.onclick=function(){var ev=g.i.every(function(i){return sel.indexOf(i)>-1});g.i.forEach(function(i){var k=sel.indexOf(i);if(ev&&k>-1)sel.splice(k,1);else if(!ev&&k<0)sel.push(i)});ref()};
-g.i.forEach(function(i){var c=cat(i),b=document.createElement("div");b.className="cp";b.innerHTML="<span>"+c.e+"</span>"+c.n;b.onclick=function(){var k=sel.indexOf(i);if(k>-1)sel.splice(k,1);else sel.push(i);ref()};els[i]=b;gd.appendChild(b)});
-h.appendChild(t);h.appendChild(al);bx.appendChild(h);bx.appendChild(gd);$("cl").appendChild(bx)});
+/* دفعة أسئلة 6: مسلسلات + أعلام */
+addQ("hf",200,["شو اسم العائلة المسيطرة على حي الحفرة؟|كوتشوفالي"]);
+addQ("hf",200,["بأي مدينة بتدور أحداث الحفرة؟|إسطنبول"]);
+addQ("hf",200,["شو الشي الممنوع بحي الحفرة؟|المخدرات"]);
+addQ("hf",200,["مين لعب دور البطل بمسلسل الحفرة؟|أراس بولوت إينملي"]);
+addQ("hf",200,["على أي قناة تركية انعرض الحفرة؟|شو تي في (Show TV)"]);
+addQ("hf",200,["شو معنى كلمة Çukur بالعربي؟|الحفرة"]);
+addQ("hf",200,["كم موسم للحفرة؟|4 مواسم"]);
+addQ("hf",200,["شو الاسم الإنجليزي للحفرة؟|The Pit"]);
+addQ("hf",200,["شو نوع مسلسل الحفرة؟|أكشن وجريمة ودراما"]);
+addQ("hf",200,["بأي لغة المسلسل الأصلي؟|التركية"]);
+addQ("hf",400,["مين لعب دور إدريس كوتشوفالي؟|إيرجان كيسال"]);
+addQ("hf",400,["مين لعبت دور سلطان زوجة إدريس؟|بيريهان سافاش"]);
+addQ("hf",400,["مين لعب دور جمالي كوتشوفالي؟|نجيب ميميلي"]);
+addQ("hf",400,["مين لعب دور متين حارس العائلة؟|جيم أوسلو"]);
+addQ("hf",400,["مين لعبت دور سينا؟|ديلان تشيتشك دينيز"]);
+addQ("hf",400,["بأي سنة بدأ عرض الحفرة؟|2017"]);
+addQ("hf",400,["مين مخرج الحفرة؟|سنان أوزتورك"]);
+addQ("hf",400,["مين كاتب الحفرة؟|غوكهان هورزوم"]);
+addQ("hf",400,["أي شركة أنتجت الحفرة؟|آي ياپيم (Ay Yapım)"]);
+addQ("hf",400,["كم حلقة للحفرة كاملة؟|131 حلقة"]);
+addQ("hf",600,["بأي تاريخ بدأ عرض الحلقة الأولى؟|23 أكتوبر 2017"]);
+addQ("hf",600,["بأي تاريخ انعرضت الحلقة الأخيرة؟|7 يونيو 2021"]);
+addQ("hf",600,["مين العدو الرئيسي بالموسم الرابع؟|جنكيز إردنيت"]);
+addQ("hf",600,["شو اسم الشخصية الغامضة بالموسم الرابع؟|الملثم (ماسكيلي)"]);
+addQ("hf",600,["كم حلقة بالموسم الأول؟|33 حلقة"]);
+addQ("hf",600,["كم حلقة بالموسم الثاني؟|34 حلقة"]);
+addQ("hf",600,["كم حلقة بالموسم الثالث؟|25 حلقة"]);
+addQ("hf",600,["كم حلقة بالموسم الرابع؟|39 حلقة"]);
+addQ("hf",600,["مين ألّف موسيقى الحفرة؟|تويغار إشيكلي"]);
+addQ("hf",600,["مين لعب دور أليتشو؟|رضا كوجا أوغلو"]);
+addQ("bh",200,["بأي بلد انتاج باب الحارة؟|سوريا"]);
+addQ("bh",200,["بأي سنة انعرض الجزء الأول؟|2006"]);
+addQ("bh",200,["شو اسم الحارة الرئيسية بالمسلسل؟|حارة الضبع"]);
+addQ("bh",200,["مين لعب دور أبو عصام؟|عباس النوري"]);
+addQ("bh",200,["مين لعب دور العكيد أبو شهاب؟|سامر المصري"]);
+addQ("bh",200,["مين لعب دور العكيد معتز؟|وائل شرف"]);
+addQ("bh",200,["بأي مدينة بتدور أحداث باب الحارة؟|دمشق"]);
+addQ("bh",200,["شو لقب قائد شباب الحارة؟|العكيد"]);
+addQ("bh",200,["أي قناة عرضت أجزاء كتيرة من باب الحارة؟|MBC"]);
+addQ("bh",200,["شو لهجة باب الحارة؟|الشامية (السورية)"]);
+addQ("bh",400,["مين مخرج الأجزاء الخمسة الأولى؟|بسام الملا"]);
+addQ("bh",400,["مين لعب دور الإدعشري؟|بسام كوسا"]);
+addQ("bh",400,["مين لعب دور أبو بدر؟|محمد خير الجراح"]);
+addQ("bh",400,["مين لعب دور عصام؟|ميلاد يوسف"]);
+addQ("bh",400,["مين الكاتب الأساسي لباب الحارة؟|مروان قاووق"]);
+addQ("bh",400,["شو اسم زعيم حارة الضبع؟|أبو صالح"]);
+addQ("bh",400,["مين لعب دور أبو حاتم؟|وفيق الزعيم"]);
+addQ("bh",400,["بأي سنة انعرض الجزء الخامس؟|2010"]);
+addQ("bh",400,["شو اسم الحارة اللي زعيمها أبو صياح؟|حارة الماوي"]);
+addQ("bh",400,["بأي جزء ظهرت سارة اليهودية؟|الجزء السابع"]);
+addQ("bh",600,["مين أخرج الجزأين السادس والسابع؟|عزام فوق العادة"]);
+addQ("bh",600,["مين أخرج الجزأين الثامن والتاسع؟|ناجي طعمة"]);
+addQ("bh",600,["مين لعبت دور سارة اليهودية؟|كندة حنا"]);
+addQ("bh",600,["بأي جزء قتل معتز الواوي؟|الجزء السادس"]);
+addQ("bh",600,["أي شركة استحوذت على إنتاج الجزء العاشر؟|قبنض"]);
+addQ("bh",600,["شو اسم شركة بسام الملا المنتجة؟|ميسلون"]);
+addQ("bh",600,["مين لعب دور أبو دراع بالأجزاء الأول والرابع والخامس؟|رامز أسود"]);
+addQ("bh",600,["شو الكلمة اللي طلّق أبو عصام زوجته بسببها؟|فشرت"]);
+addQ("bh",600,["كم جزء أخرج بسام الملا؟|5 أجزاء"]);
+addQ("bh",600,["بأي سنة انعرض الجزء الثالث؟|2008"]);
+addQ("fl",200,["لأي دولة هذا العلم؟ 🇦🇪|الإمارات"]);
+addQ("fl",200,["لأي دولة هذا العلم؟ 🇶🇦|قطر"]);
+addQ("fl",200,["لأي دولة هذا العلم؟ 🇰🇼|الكويت"]);
+addQ("fl",200,["لأي دولة هذا العلم؟ 🇴🇲|عُمان"]);
+addQ("fl",200,["لأي دولة هذا العلم؟ 🇧🇭|البحرين"]);
+addQ("fl",200,["لأي دولة هذا العلم؟ 🇮🇶|العراق"]);
+addQ("fl",200,["لأي دولة هذا العلم؟ 🇸🇾|سوريا"]);
+addQ("fl",200,["لأي دولة هذا العلم؟ 🇱🇧|لبنان"]);
+addQ("fl",200,["لأي دولة هذا العلم؟ 🇵🇸|فلسطين"]);
+addQ("fl",200,["لأي دولة هذا العلم؟ 🇾🇪|اليمن"]);
+addQ("fl",200,["لأي دولة هذا العلم؟ 🇱🇾|ليبيا"]);
+addQ("fl",200,["لأي دولة هذا العلم؟ 🇹🇳|تونس"]);
+addQ("fl",200,["لأي دولة هذا العلم؟ 🇩🇿|الجزائر"]);
+addQ("fl",200,["لأي دولة هذا العلم؟ 🇲🇦|المغرب"]);
+addQ("fl",200,["لأي دولة هذا العلم؟ 🇸🇩|السودان"]);
+addQ("fl",200,["لأي دولة هذا العلم؟ 🇦🇷|الأرجنتين"]);
+addQ("fl",200,["لأي دولة هذا العلم؟ 🇳🇱|هولندا"]);
+addQ("fl",200,["لأي دولة هذا العلم؟ 🇸🇪|السويد"]);
+addQ("fl",200,["لأي دولة هذا العلم؟ 🇬🇷|اليونان"]);
+addQ("fl",200,["لأي دولة هذا العلم؟ 🇺🇦|أوكرانيا"]);
+addQ("fl",200,["لأي دولة هذا العلم؟ 🇮🇷|إيران"]);
+addQ("fl",200,["لأي دولة هذا العلم؟ 🇵🇰|باكستان"]);
+addQ("fl",200,["لأي دولة هذا العلم؟ 🇦🇫|أفغانستان"]);
+addQ("fl",200,["لأي دولة هذا العلم؟ 🇨🇺|كوبا"]);
+addQ("fl",200,["لأي دولة هذا العلم؟ 🇨🇴|كولومبيا"]);
+addQ("fl",200,["لأي دولة هذا العلم؟ 🇹🇭|تايلاند"]);
+addQ("fl",200,["لأي دولة هذا العلم؟ 🇻🇳|فيتنام"]);
+addQ("fl",200,["لأي دولة هذا العلم؟ 🇵🇭|الفلبين"]);
+addQ("fl",200,["لأي دولة هذا العلم؟ 🇲🇾|ماليزيا"]);
+addQ("fl",200,["لأي دولة هذا العلم؟ 🇸🇬|سنغافورة"]);
+addQ("fl",200,["لأي دولة هذا العلم؟ 🇩🇰|الدنمارك"]);
+addQ("fl",200,["لأي دولة هذا العلم؟ 🇫🇮|فنلندا"]);
+addQ("fl",200,["لأي دولة هذا العلم؟ 🇮🇩|إندونيسيا"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇸🇴|الصومال"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇲🇷|موريتانيا"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇩🇯|جيبوتي"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇰🇲|جزر القمر"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇪🇹|إثيوبيا"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇰🇪|كينيا"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇳🇬|نيجيريا"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇬🇭|غانا"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇸🇳|السنغال"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇨🇮|كوت ديفوار"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇹🇿|تنزانيا"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇺🇬|أوغندا"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇿🇼|زيمبابوي"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇦🇴|أنغولا"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇲🇿|موزمبيق"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇨🇲|الكاميرون"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇨🇩|الكونغو الديمقراطية"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇵🇪|بيرو"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇻🇪|فنزويلا"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇪🇨|الإكوادور"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇺🇾|الأوروغواي"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇵🇾|باراغواي"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇧🇴|بوليفيا"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇨🇷|كوستاريكا"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇵🇦|بنما"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇯🇲|جامايكا"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇭🇹|هايتي"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇩🇴|جمهورية الدومينيكان"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇨🇿|التشيك"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇸🇰|سلوفاكيا"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇭🇺|المجر"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇷🇴|رومانيا"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇧🇬|بلغاريا"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇷🇸|صربيا"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇭🇷|كرواتيا"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇧🇦|البوسنة والهرسك"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇦🇱|ألبانيا"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇮🇸|آيسلندا"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇱🇺|لوكسمبورغ"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇲🇹|مالطا"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇨🇾|قبرص"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇬🇪|جورجيا"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇦🇲|أرمينيا"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇦🇿|أذربيجان"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇰🇿|كازاخستان"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇺🇿|أوزبكستان"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇧🇩|بنغلاديش"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇱🇰|سريلانكا"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇲🇲|ميانمار"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇰🇭|كمبوديا"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇱🇦|لاوس"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇲🇳|منغوليا"]);
+addQ("fl",400,["لأي دولة هذا العلم؟ 🇰🇵|كوريا الشمالية"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇱🇻|لاتفيا"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇱🇹|ليتوانيا"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇪🇪|إستونيا"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇸🇮|سلوفينيا"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇲🇰|مقدونيا الشمالية"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇲🇪|الجبل الأسود"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇲🇩|مولدوفا"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇧🇾|بيلاروسيا"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇱🇮|ليختنشتاين"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇲🇨|موناكو"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇸🇲|سان مارينو"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇦🇩|أندورا"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇻🇦|الفاتيكان"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇹🇯|طاجيكستان"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇹🇲|تركمانستان"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇰🇬|قيرغيزستان"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇧🇹|بوتان"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇲🇻|المالديف"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇧🇳|بروناي"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇹🇱|تيمور الشرقية"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇵🇬|بابوا غينيا الجديدة"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇫🇯|فيجي"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇼🇸|ساموا"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇹🇴|تونغا"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇻🇺|فانواتو"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇸🇧|جزر سليمان"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇰🇮|كيريباتي"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇹🇻|توفالو"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇳🇷|ناورو"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇫🇲|ميكرونيزيا"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇲🇭|جزر مارشال"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇵🇼|بالاو"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇧🇸|الباهاماس"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇧🇧|بربادوس"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇹🇹|ترينيداد وتوباغو"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇬🇾|غيانا"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇸🇷|سورينام"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇧🇿|بليز"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇬🇹|غواتيمالا"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇭🇳|هندوراس"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇸🇻|السلفادور"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇳🇮|نيكاراغوا"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇱🇨|سانت لوسيا"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇬🇩|غرينادا"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇻🇨|سانت فنسنت والغرينادين"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇦🇬|أنتيغوا وبربودا"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇰🇳|سانت كيتس ونيفيس"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇩🇲|دومينيكا"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇲🇱|مالي"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇳🇪|النيجر"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇹🇩|تشاد"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇧🇫|بوركينا فاسو"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇧🇯|بنين"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇹🇬|توغو"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇬🇳|غينيا"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇬🇼|غينيا بيساو"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇸🇱|سيراليون"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇱🇷|ليبيريا"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇬🇲|غامبيا"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇨🇻|الرأس الأخضر"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇸🇹|ساو تومي وبرينسيب"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇬🇶|غينيا الاستوائية"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇬🇦|الغابون"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇨🇬|جمهورية الكونغو"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇨🇫|أفريقيا الوسطى"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇷🇼|رواندا"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇧🇮|بوروندي"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇸🇸|جنوب السودان"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇪🇷|إريتريا"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇲🇼|ملاوي"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇿🇲|زامبيا"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇧🇼|بوتسوانا"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇳🇦|ناميبيا"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇱🇸|ليسوتو"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇸🇿|إسواتيني"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇲🇬|مدغشقر"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇲🇺|موريشيوس"]);
+addQ("fl",600,["لأي دولة هذا العلم؟ 🇸🇨|سيشل"]);
+var P={is:["🕌","🌙","📿"],ay:["📖","✨","🤲"],an:["🦁","🐘","🦒"],sc:["🔬","🧪","🚀"],pr:["💬","📜","🧠"],gn:["🧠","💡","🌍"],fd:["🍽️","🍕","🥙"],ge:["🗺️","⛰️","🌊"],co:["🌐","🏙️","🧭"],fl:["🚩","🇯🇴","🇧🇷"],lm:["🗼","🗽","🕌"],ar:["🌍","🕌","🐪"],cb:["🚗","🏎️","🔧"],ct:["🚙","🚌","⚙️"],el:["💻","📱","🎧"],tc:["🏢","💡","🖥️"],ap:["📱","💬","🎵"],jt:["🏟️","⚽","🇯🇴"],jf:["🍖","🥘","☕"],jo:["🏛️","🗺️","🇯🇴"],br:["🏷️","✈️","🏦"],mv:["🎬","🍿","⭐"],tr:["📺","🌹","🎭"],hf:["🕳️","🏙️","🔥"],bh:["🚪","🏘️","🧔"],sp:["⚽","🏀","🏆"],is_:0};
+var GR=[{t:"دين",i:["is","ay"]},{t:"منوّعات",i:["an","sc","pr","gn"]},{t:"بلاد وعالم",i:["fd","ge","co","fl","lm","ar"]},{t:"سيارات",i:["cb","ct"]},{t:"إلكترونيات",i:["el","tc","ap"]},{t:"الأردن",i:["jt","jf","jo","br"]},{t:"ترفيه ورياضة",i:["mv","tr","hf","bh","sp"]}],els={};
+function ref(){var n=sel.length;$("go").disabled=n!==6;$("cn").textContent=n;Object.keys(els).forEach(function(i){var on=sel.indexOf(i)>-1;els[i].classList.toggle("on",on);els[i].classList.toggle("dim",!on&&n>=6)})}
+GR.forEach(function(g){var bx=document.createElement("div"),h=document.createElement("div"),tt=document.createElement("h3"),gd=document.createElement("div");
+h.className="gh";tt.textContent=g.t;h.appendChild(tt);gd.className="cl";
+g.i.forEach(function(i){var c=cat(i),b=document.createElement("div");b.className="cc";
+b.innerHTML='<div class="pic"><i class="ck">✓</i><span class="e1">'+P[i][0]+'</span><span class="e2">'+P[i][1]+'</span><span class="e3">'+P[i][2]+'</span></div><div class="lb">'+c.n+'</div>';
+b.onclick=function(){var k=sel.indexOf(i);if(k>-1)sel.splice(k,1);else if(sel.length<6)sel.push(i);else return;ref()};els[i]=b;gd.appendChild(b)});
+bx.appendChild(h);bx.appendChild(gd);$("cl").appendChild(bx)});
 $("enter").onclick=function(){go("setup")};
 $("go").onclick=function(){G={c:C.map(function(x){return x.id}).filter(function(i){return sel.indexOf(i)>-1}),n:[$("n1").value.trim()||"الفريق الأول",$("n2").value.trim()||"الفريق الثاني"],s:[0,0],t:0,u:{},left:sel.length*6};draw();go("board")};
 function draw(){
 $("l1").textContent=G.n[0];$("l2").textContent=G.n[1];$("s1").textContent=G.s[0];$("s2").textContent=G.s[1];
 $("tn").textContent="الدور: "+G.n[G.t];
 $("bd").innerHTML=G.c.map(function(id){var c=cat(id);
-return '<div class="ct"><div class="im" style="background:'+(c.img?'url('+c.img+') center/cover':'linear-gradient(135deg,'+c.a+','+c.b+')')+'">'+(c.img?'':'<span>'+c.e+'</span>')+'</div><div class="cn">'+c.n+'</div><div class="tl">'+
+return '<div class="ct"><div class="im" style="background:'+(c.img?'url('+c.img+') center/cover':'linear-gradient(135deg,'+c.a+','+c.b+')')+'">'+(c.img?'':'<span>'+P[id][0]+'</span><b class="s1">'+P[id][1]+'</b><b class="s2">'+P[id][2]+'</b>')+'</div><div class="cn">'+c.n+'</div><div class="tl">'+
 [200,400,600].map(function(l){return [0,1].map(function(k){var u=G.u[id+l+k];return '<button class="tb'+(u?' us':'')+'" data-c="'+id+'" data-l="'+l+'" data-k="'+k+'"'+(u?' disabled':'')+'>'+l+'</button>'}).join("")}).join("")+'</div></div>'}).join("")}
 $("bd").onclick=function(e){var b=e.target.closest(".tb");if(!b||b.disabled)return;ask(b.dataset.c,+b.dataset.l,b.dataset.c+b.dataset.l+b.dataset.k)};
 function ask(c,l,key){
@@ -892,8 +1151,6 @@ seen.push(ix);S[k]=seen;sv();cur={key:key,l:l};
 $("mp").textContent=l;$("mc").textContent=cat(c).n;$("mq").textContent=p[0];$("ma").textContent=p[1];
 $("ma").classList.add("hide");$("aw").classList.add("hide");$("sh").classList.remove("hide");
 $("w1").textContent="صح: "+G.n[0];$("w2").textContent="صح: "+G.n[1];
-var n=60;$("tm").textContent=n;$("tm").className="";clearInterval(ti);
-ti=setInterval(function(){n--;$("tm").textContent=Math.max(n,0);if(n<=10)$("tm").className="low";if(n<=0)clearInterval(ti)},1000);
 $("md").classList.add("on")}
 $("sh").onclick=function(){clearInterval(ti);$("ma").classList.remove("hide");$("aw").classList.remove("hide");$("sh").classList.add("hide")};
 function aw(w){clearInterval(ti);if(w>-1)G.s[w]+=cur.l;G.u[cur.key]=1;G.left--;G.t=1-G.t;$("md").classList.remove("on");draw();if(G.left<=0)fin()}
@@ -908,7 +1165,6 @@ $("fin").onclick=fin;
 $("again").onclick=function(){go("setup")};
 })();
 </script>
-<script src="q2.js"></script>
-<script src="q3.js"></script>
+<script>try{if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(function(){})}catch(e){}</script>
 </body>
 </html>
